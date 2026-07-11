@@ -1,6 +1,11 @@
 const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     if (!m.isGroup || (!isAdmin &&!isOwner)) {
-        return m.reply('⛈️ *RAYO PREM* ⚡\n\n❌ *¡ACCESO DENEGADO!*\nSolo los admins o el dueño pueden invocar este trueno.');
+        return m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ ⛈️ *ACCESO DENEGADO*
+│
+│ ⚡ *Solo los admins o el dueño*
+│ 🌙 *pueden invocar este trueno*
+╰─────────────────❒`);
     }
 
     let chat = global.db.data.chats[m.chat]
@@ -8,14 +13,45 @@ const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     chat = global.db.data.chats[m.chat]
 
     if (command === 'setwelcome') {
-        if (!text) return m.reply(`🌩️ *RAYO PREM SETWELCOME* ⚡\n\n❌ *¡FALTA EL MENSAJE!*\n\n📝 *Placeholders:*\n@user = Mención\n@group = Grupo\n@count = Miembros\n@desc = Descripción\n💡 *Ejemplo:*\n.setwelcome ⛈️ @user invocó el trueno ⚡\n🌩️ Bienvenido a @group\n👥 Eres el guerrero #@count`);
+        if (!text) return m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ 🌩️ *CONFIGURAR BIENVENIDA*
+│
+│ ⚡ *Falta el mensaje*
+│
+│ 📝 *Placeholders:*
+│ @user = Mención
+│ @group = Grupo  
+│ @count = Miembros
+│ @desc = Descripción
+│
+│ 💡 *Ejemplo:*
+│ .setwelcome ⛈️ @user invocó el trueno ⚡
+│ 🌩️ Bienvenido a @group
+│ 👥 Eres el guerrero #@count
+╰─────────────────❒`);
         chat.customWelcome = text.trim();
-        return m.reply(`⛈️ *RAYO PREM* ⚡\n\n✅ *¡BIENVENIDA GUARDADA!*\n\n📝 *Vista previa:*\n\`\`${text.trim()}\`\n\n🗑️ *Para borrar:* .delwelcome`);
+        return m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ ✅ *BIENVENIDA GUARDADA*
+│
+│ 📝 *Vista previa:*
+│ \`\`${text.trim()}\`\`
+│
+│ 🗑️ *Para borrar:* .delwelcome
+╰─────────────────❒`);
     }
     if (command === 'delwelcome') {
-        if (!chat.customWelcome) return m.reply('🌩️ *RAYO PREM* ⚡\n\n⚠️ *No tienes una bienvenida editada.*');
+        if (!chat.customWelcome) return m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ ⚠️ *SIN BIENVENIDA*
+│
+│ 🌙 *No tienes una bienvenida editada*
+╰─────────────────❒`);
         delete chat.customWelcome;
-        return m.reply('⛈️ *RAYO PREM* ⚡\n\n✅ *¡LISTO!*\n\n🗑️ Se eliminó la bienvenida personalizada.\n⚡ Ahora se usa la de `welcome.js`');
+        return m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ ✅ *BIENVENIDA ELIMINADA*
+│
+│ 🗑️ *Se borró el mensaje personalizado*
+│ ⚡ *Ahora se usa la de welcome.js*
+╰─────────────────❒`);
     }
 };
 handler.help = ['setwelcome <mensaje>', 'delwelcome'];
