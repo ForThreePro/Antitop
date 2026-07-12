@@ -3,8 +3,11 @@ import { readFileSync } from 'fs'
 
 let handler = async (m, { conn, usedPrefix }) => {
   let taguser = m.mentionedJid && m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : m.sender
-
   const img = readFileSync(join(process.cwd(), 'storage', 'img', 'rayo.jpg'))
+
+  // Stats
+  let totalUsers = Object.keys(global.db.data.users).length
+  let totalCmds = Object.values(global.plugins).filter(p => p.help &&!p.disabled).length
 
   // Fecha y hora
   let fecha = new Date()
@@ -21,24 +24,31 @@ let handler = async (m, { conn, usedPrefix }) => {
   let m2 = Math.floor(uptime / 60000) % 60
   let s = Math.floor(uptime / 1000) % 60
 
-  let menuText = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│
-│ 👤 *Usuario:* @${taguser.split('@')[0]}
-│ ⚡ *Prefijo:* [ ${usedPrefix} ]
-│ ⏰ *Activo:* ${h}h ${m2}m ${s}s
-│
-├─❒ *FECHA Y HORA* ❒
-│ 📅 *Día:* ${dia}
-│ 📆 *Fecha:* ${fechaCompleta}
-│ 🕐 *Hora:* ${hora}
-│
-╰─────────────────❒\n\n`
+  let menuText = `⚡━━━━━━━━━━━━━━━━⚡
+     ⛈️ *𝐑𝐀𝐘𝐎 𝐏𝐑𝐄𝐌 𝐁𝐎𝐓* ⛈️
+⚡━━━━━━━━⚡
+
+⚡ *Usuario:* @${taguser.split('@')[0]}
+⛈️ *Prefijo:* [ ${usedPrefix} ]
+⏰ *Activo:* ${h}h ${m2}m ${s}s
+
+⚡━━ *ESTADISTICAS* ━━⚡
+📊 *Comandos:* ${totalCmds}
+👥 *Usuarios:* ${totalUsers}
+⚡ *Modo:* Publico
+
+⚡━━ *FECHA Y HORA* ━━⚡
+📅 *Día:* ${dia}
+📆 *Fecha:* ${fechaCompleta}
+🕐 *Hora:* ${hora}
+
+`
 
   let help = Object.values(global.plugins).filter(p => p.help &&!p.disabled)
   let groups = {}
 
   for (let plugin of help) {
-    let category = plugin.tags? plugin.tags[0] : 'sin categoria'
+    let category = plugin.tags? plugin.tags[0] : 'general'
     if (!groups[category]) groups[category] = []
     if (Array.isArray(plugin.help)) groups[category].push(...plugin.help)
     else groups[category].push(plugin.help)
@@ -51,26 +61,31 @@ let handler = async (m, { conn, usedPrefix }) => {
     'group': '👥',
     'info': 'ℹ️',
     'fun': '🎭',
-    'main': '🌙',
-    'sin categoria': '📦'
+    'sticker': '⚡',
+    'owner': '👑',
+    'anime': '🌸',
+    'rg': '💎',
+    'game': '🎮',
+    'general': '✨'
   }
 
   for (let category in groups) {
-    let emoji = emojis[category] || '⚡'
-    menuText += `╭─❒ ${emoji} *${category.toUpperCase()}* ❒\n`
+    let emoji = emojis[category] || '⛈️'
+    menuText += `⚡━━ ${emoji} *${category.toUpperCase()}* ━━⚡\n`
     for (let cmd of groups[category]) {
-      menuText += `│ ⚡ ${usedPrefix}${cmd}\n`
+      menuText += `⛈️ ${usedPrefix}${cmd}\n`
     }
-    menuText += `╰─────────────────❒\n\n`
+    menuText += `\n`
   }
 
-  menuText += `╭─❒ *INFO DEL BOT* ❒
-│ 🌙 *Bot:* Team Nightwish
-│ 👑 *Creador:* Whois Yallico
-│ ⛈️ *Versión:* 1.0.0
-│
-│ > *“Que el trueno obedezca tus órdenes”*
-╰─────────────────❒`
+  menuText += `⚡━━━━━━━━━━━━━━━━
+⛈️ *BOT:* Rayo Prem Bot
+⚡ *Creador:* Whois Yallico 👑
+⛈️ *Versión:* 3.0.0 Thunder Edition
+⚡ *Github:* github.com/WhoisYallico
+
+> *"Domina el trueno, domina el chat"* ⚡
+⚡━━━━━━━━`
 
   await conn.sendMessage(m.chat, {
     image: img,
