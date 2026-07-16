@@ -53,15 +53,20 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
     const orderedFlags = countryFlags.map(c => c.bandera).concat(['🚩']);
 
     // Texto con estética Team Nightwish
-    let messageText = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 📢 *INVOCACIÓN GENERAL*
-│
-│ 🌐 *Grupo:* ${groupName}
-│ ⚡ *Integrantes:* ${participants.length}
-│ 🌙 *Mensaje:* ${customMessage}
-│
-├─❒ *INTEGRANTES POR PAÍS* ❒
-`;
+    let messageText = `ᯇ 𝗥𝗔𝗬𝗢 𝗣𝗥𝗘𝗠 𝗕𝗢𝗧 ⚡ ୧
+
+ ⤷ ┇ 𝗜𝗡𝗩𝗢𝗖𝗔𝗖𝗜𝗢𝗡 𝗚𝗘𝗡𝗘𝗥𝗔𝗟 ：✿ 。
+꒰ ◞⁺⊹ ．grupo • ${groupName}
+
+ ꒱ ׁ. ᘏ 𝗆𝖾𝗇𝗌⍺𝗃𝖾 ׅ 𝆬
+⚡ ${customMessage} ࣪ ꕀ ˚
+> *"Domina el trueno, domina el chat"*
+
+──愛 *INTEGRANTES* ╏ 📊
+👥 Total: ${participants.length} usuarios
+
+──⚡ *LISTA POR PAÍS* ⚡──
+`
 
     for (const flag of orderedFlags) {
       if (grouped[flag]) {
