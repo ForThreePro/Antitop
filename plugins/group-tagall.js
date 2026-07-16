@@ -45,12 +45,12 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       return '🚩';
     };
 
-    // Agrupar por bandera CORRECTO
+    // Agrupar por bandera
     const grouped = {};
     for (const mem of participants) {
       const flag = getCountryFlag(mem);
-      if (!grouped[flag]) grouped[flag] = [];
-      grouped[flag].push(mem);
+      if (!grouped) grouped = [];
+      grouped.push(mem);
     }
 
     const orderedFlags = countryFlags.map(c => c.bandera).concat(['🚩']);
@@ -72,9 +72,9 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
 `
 
     for (const flag of orderedFlags) {
-      if (grouped[flag]) { // <-- ESTA ERA LA FALLA
+      if (grouped) {
         messageText += `\n.⃟𖥔 ݁⚡𖦹˙— \`${flag}\` —˙𖦹⚡꒷\n`
-        for (const mem of grouped[flag]) { // <-- Y ESTA
+        for (const mem of grouped) {
           const realJid = mem.jid || mem.id || '';
           const displayNumber = realJid.split('@')[0];
           messageText += ` ⚡ ➛@${displayNumber}\n`
@@ -87,24 +87,31 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
 ⚡━━━━━━━━
 ⛈️ *BOT:* RAYO PREM BOT
 ⚡ *Creador:* Whois Yallico 👑
-⛈️ *Versión:* 3.0.4 Thunder Clean
+⛈️ *Versión:* 3.0.6 Thunder Clean
 
 > *"Que el trueno los reúna"* ⚡
 ⚡━━━━━━━━`
 
-    // Foto del grupo
+    // SOLO DETECTAR FOTO DEL GRUPO
     let img
     try {
-      img = await conn.profilePictureUrl(m.chat, 'image')
-    } catch {
-      img = readFileSync(join(process.cwd(), 'storage', 'img', 'rayo.jpg'))
-    }
+      const url = await conn.profilePictureUrl(m.chat, 'image')
+      const res = await fetch(url)
+      img = await res.buffer() // Descargar a buffer
 
-    await conn.sendMessage(m.chat, {
-      image: img,
-      caption: messageText,
-      mentions: participants.map(a => a.jid || a.id)
-    }, { quoted: m });
+      await conn.sendMessage(m.chat, {
+        image: img,
+        caption: messageText,
+        mentions: participants.map(a => a.jid || a.id)
+      }, { quoted: m });
+
+    } catch {
+      // Si no hay foto, manda solo texto
+      await conn.sendMessage(m.chat, {
+        text: messageText,
+        mentions: participants.map(a => a.jid || a.id)
+      }, { quoted: m });
+    }
 
   } catch (error) {
     console.error("[ERROR EN RAYO TODOS]:", error);
