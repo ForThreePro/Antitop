@@ -25,7 +25,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 
   let menuText = `ᯇ 𝗥𝗔𝗬𝗢 𝗣𝗥𝗘𝗠 𝗕𝗢𝗧 ⚡ ୧
 
- ⤷ ┇ version ﹒ 3.0.2 Thunder Clean ：✿ 。
+ ⤷ ┇ version ﹒ 3.0.3 Thunder Clean ：✿ 。
 ꒰ ◞⁺⊹ ．online • ${h}h ${m2}m ${s}s
 
  ꒱ ׁ. ᘏ 𝗎𝗌𝗎⍺𝗋ⲓ𝗈 ׅ 𝆬
@@ -72,8 +72,8 @@ let handler = async (m, { conn, usedPrefix }) => {
   menuText += `⚡━━━━━━━━
 ⛈️ *BOT:* RAYO PREM BOT
 ⚡ *Creador:* Whois Yallico 👑
-⛈️ *Versión:* 3.0.2 Thunder Clean
-🌐 *Web:* forthreepro.github.io/For-Three-Bot
+⛈️ *Versión:* 3.0.3 Thunder Clean
+🌐 *Web:* https://forthreepro.github.io/Whois-Yallico
 
 > *"Domina el trueno, domina el chat"* ⚡
 ⚡━━━━━━━━`
