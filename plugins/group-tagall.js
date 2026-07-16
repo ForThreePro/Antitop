@@ -12,7 +12,6 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
     const groupMetadata = await conn.groupMetadata(m.chat).catch(() => ({ subject: 'Grupo', participants: [] }));
     const groupName = groupMetadata.subject;
 
-    // Lista de banderas por prefijo
     const countryFlags = [
       { prefijo: '502', bandera: '🇬🇹' }, { prefijo: '503', bandera: '🇸🇻' },
       { prefijo: '504', bandera: '🇭🇳' }, { prefijo: '505', bandera: '🇳🇮' },
@@ -45,7 +44,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       return '🚩';
     };
 
-    // Agrupar participantes por bandera - ARREGLADO
+    // ARREGLADO AQUI
     const grouped = {};
     for (const mem of participants) {
       const flag = getCountryFlag(mem);
@@ -55,7 +54,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
 
     const orderedFlags = countryFlags.map(c => c.bandera).concat(['🚩']);
 
-    // DISEÑO THUNDER CLEAN
+    // DISEÑO THUNDER
     let messageText = `ᯇ 𝗥𝗔𝗬𝗢 𝗣𝗥𝗘𝗠 𝗕𝗢𝗧 ⚡ ୧
 
  ⤷ ┇ 𝗜𝗡𝗩𝗢𝗖𝗔𝗖𝗜𝗢𝗡 𝗚𝗘𝗡𝗘𝗥𝗔𝗟 ：✿ 。
@@ -87,28 +86,18 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
 ⚡━━━━━━━━
 ⛈️ *BOT:* RAYO PREM BOT
 ⚡ *Creador:* Whois Yallico 👑
-⛈️ *Versión:* 3.1.2 Thunder Clean
+⛈️ *Versión:* 3.1.3 Thunder Clean
 
 > *"Que el trueno los reúna"* ⚡
 ⚡━━━━━━━━`
 
-    // Detectar foto del grupo y convertir a buffer
     try {
       const url = await conn.profilePictureUrl(m.chat, 'image')
       const res = await fetch(url)
       const img = await res.buffer()
-
-      await conn.sendMessage(m.chat, {
-        image: img,
-        caption: messageText,
-        mentions: participants.map(a => a.jid || a.id)
-      }, { quoted: m });
-
+      await conn.sendMessage(m.chat, { image: img, caption: messageText, mentions: participants.map(a => a.jid || a.id) }, { quoted: m });
     } catch {
-      await conn.sendMessage(m.chat, {
-        text: messageText,
-        mentions: participants.map(a => a.jid || a.id)
-      }, { quoted: m });
+      await conn.sendMessage(m.chat, { text: messageText, mentions: participants.map(a => a.jid || a.id) }, { quoted: m });
     }
 
   } catch (error) {
