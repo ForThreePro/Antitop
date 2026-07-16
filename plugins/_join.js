@@ -1,16 +1,24 @@
-let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})( [0-9]{1,3})?/i
+let handler = async (m, { conn, isOwner }) => {
+    if (!isOwner) return m.reply('❌ Solo el owner puede usar este comando')
 
-let handler = async (m, { conn, text, isOwner, usedPrefix, command }) => {
+    let botnum = conn.user.jid.split('@')[0]
 
-if (!text) return m.reply(`❀ Ingresa el enlace del grupo para unirme mi amor^^.`)
-let [_, code] = text.match(linkRegex) || []
-if (!code) return m.reply('🌺 Enlace invalido.')
-let res = await conn.groupAcceptInvite(code)
-m.reply(`🍭 Me uní correctamente al grupo`)
+    let texto = `🐼 *SOLICITUD DE INGRESO*
+
+Hola admins! Soy el bot.
+Por favor agréguenme al grupo.
+
+*Mi número:* +${botnum}
+*Link:* https://wa.me/${botnum}
+
+Si hay verificación de ingreso, acéptenme porfa 💗`
+
+    m.reply(texto)
 }
-handler.help = ['join <link>']
-handler.tags = ['mods']
-handler.command = ['join', 'entrar'] 
+
+handler.help = ['pedirjoin']
+handler.tags = ['owner']
+handler.command = ['pedirjoin', 'agregame']
 handler.owner = true
 
 export default handler
