@@ -78,10 +78,12 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       }
     }
 
-    messageText += `╰─────────────────❒
-│
-│ > *“Que el trueno los reúna”*
-╰─────────────────❒`;
+    messageText += `.⃟𖥔 ݁⚡𖦹˙—  *RAYO PREM BOT*  —˙𖦹⚡꒷
+⛈️ Creador: Whois Yallico 👑
+⚡ Versión: 3.1.5 Thunder Clean
+
+> *"Que el trueno los reúna"* ⚡
+ ㅤ└──.✦ ── ⊰ ̟!!.✦. `;
 
     // NUEVO: Detectar foto del grupo
     let img
