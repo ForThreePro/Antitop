@@ -26,7 +26,7 @@ export async function before(m, { conn }) {
     const user = `@${userName}`;
 
     // [DATOS DEL GRUPO]
-    const groupName = groupMetadata.subject || 'Mi Grupo';
+    const groupName = groupMetadata.subject || 'Mi Sistema';
     const groupDesc = groupMetadata.desc?.toString() || '📜 Sin descripción';
     const groupMembers = groupMetadata.participants.length;
 
@@ -48,56 +48,56 @@ export async function before(m, { conn }) {
 
     let text = '', audioFile = '';
 
-    // [SWITCH DISEÑO TEAM NIGHTWISH]
+    // [SWITCH DISEÑO CYBER BOT]
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
       audioFile = './bienvenida.mp3';
       text = chat.customWelcome
-  ? chat.customWelcome.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🌙 *NUEVO INTEGRANTE*
+ ? chat.customWelcome.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ ⚡ *NUEVO USUARIO CONECTADO*
 │
-│ ⚡ *Bienvenido:* ${user}
-│ ⛈️ *Acaba de unirse a la tormenta*
+│ 🤖 *Bienvenido:* ${user}
+│ ⚡ *Se ha conectado al sistema*
 │
-│ 🎮 *Grupo:* ${groupName}
-│ 👥 *Miembros:* ${groupMembers}
+│ 💻 *Sistema:* ${groupName}
+│ 👥 *Usuarios:* ${groupMembers}
 │ 📜 *Descripción:* ${groupDesc}
 │
-│ > *“Que el trueno te guíe en la noche”*
+│ > *“Nuevo nodo agregado al sistema”*
 ╰─────────────────❒`.trim();
 
     } else if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
       audioFile = './despedida.mp3';
       text = chat.customBye
-  ? chat.customBye.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 💨 *SALIDA REGISTRADA*
+ ? chat.customBye.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ 💨 *DESCONEXIÓN REGISTRADA*
 │
-│ 🌫️ *Se fue:* ${user}
-│ ⛈️ *Abandonó la tormenta*
+│ 🌫️ *Se desconectó:* ${user}
+│ ⚡ *Nodo fuera de línea*
 │
-│ 🎮 *Grupo:* ${groupName}
+│ 💻 *Sistema:* ${groupName}
 │ 👥 *Quedan:* ${groupMembers}
-│ 📜 *Motivo:* Salida voluntaria
+│ 📜 *Motivo:* Desconexión voluntaria
 │
-│ > *“Que los vientos nocturnos lo acompañen”*
+│ > *“Nodo desconectado del sistema”*
 ╰─────────────────❒`.trim();
 
     } else if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE) {
       audioFile = './kick.mp3';
       text = chat.customKick
-  ? chat.customKick.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+ ? chat.customKick.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
 │ 🚮 *EXPULSIÓN EJECUTADA*
 │
 │ 💣 *Eliminado:* ${user}
-│ ⚡ *Juicio del trueno aplicado*
+│ ⚡ *Protocolo de seguridad aplicado*
 │
-│ 🎮 *Grupo:* ${groupName}
+│ 💻 *Sistema:* ${groupName}
 │ 👥 *Quedan:* ${groupMembers}
-│ 📜 *Motivo:* Violó las leyes del grupo
+│ 📜 *Motivo:* Violó protocolos del sistema
 │
-│ > *“El rayo no perdona la traición”*
+│ > *“Acceso denegado por violación”*
 ╰─────────────────❒`.trim();
     } else return true;
 
