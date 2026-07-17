@@ -4,7 +4,7 @@ import os from 'os'
 
 let handler = async (m, { conn, usedPrefix }) => {
   let taguser = m.mentionedJid && m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : m.sender
-  const img = readFileSync(join(process.cwd(), 'storage', 'img', 'cyber.jpg')) // Cambiado
+  const img = readFileSync(join(process.cwd(), 'storage', 'img', 'rayo.jpg')) // Cambiado
 
   let totalUsers = Object.keys(global.db.data.users).length
   let totalCmds = Object.values(global.plugins).filter(p => p.help &&!p.disabled).length
