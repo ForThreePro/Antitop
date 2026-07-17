@@ -5,10 +5,10 @@ import { fileTypeFromBuffer } from "file-type"
 let handler = async (m, { conn }) => {
   let q = m.quoted ? m.quoted : m
   let mime = (q.msg || q).mimetype || ''
-  if (!mime) return conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 📦 *ERROR*
+  if (!mime) return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ ⚠️ *ERROR DE SISTEMA*
 │
-│ 🌙 *Responde a un archivo válido*
+│ 🤖 *Responde a un archivo válido*
 │ ⚡ *Formatos:* Imagen, Video, Audio, Doc
 ╰─────────────────❒`, m)
 
@@ -20,15 +20,15 @@ let handler = async (m, { conn }) => {
 
     if (!link.success) throw new Error()
 
-    let txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ☁️ *ARCHIVO SUBIDO*
+    let txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ ☁️ *ARCHIVO SUBIDO A LA NUBE*
 │
 │ 🔗 *Enlace:* ${link.url}
 │ 🆔 *ID:* ${link.id}
 │ 📊 *Tamaño:* ${formatBytes(media.length)}
 │ ⚡ *Servidor:* evogb.win
 │
-│ > *“Almacenado en la nube nocturna”*
+│ > *“Archivo almacenado en el servidor”*
 ╰─────────────────❒`
 
     await conn.sendFile(m.chat, media, 'file.' + link.url.split('.').pop(), txt, m)
@@ -36,11 +36,11 @@ let handler = async (m, { conn }) => {
   } catch (e) {
     console.error(e)
     await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
-    await conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⛈️ *ERROR*
+    await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ ❌ *ERROR DE SUBIDA*
 │
 │ ⚡ *No se pudo subir el archivo*
-│ 🌙 *Intenta de nuevo*
+│ 🤖 *Intenta de nuevo en unos seg*
 ╰─────────────────❒`, m)
   }
 }
