@@ -17,115 +17,115 @@ handler.before = async function (m, { conn, groupMetadata }) {
 
     switch (m.messageStubType) {
         case 21: // Cambiar nombre
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *REGISTRO DEL SISTEMA*
+            txt = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: registro del sistema*
 │
-│ 📢 *CAMBIO DE NOMBRE*
-│ 👤 *Usuario:* ${usuario}
-│ 📝 *Nuevo:* _${m.messageStubParameters[0]}_
-│ 💻 *Grupo:* ${group}
+│ 📢 *cambio de nombre*
+│ 👤 *usuario:* ${usuario}
+│ 📝 *nuevo:* _${m.messageStubParameters[0]}_
+│ 💻 *grupo:* ${group}
 │
-│ > *“Sistema renombrado correctamente”* 🤖
+│ > *🪩 Antitop Dice: sistema renombrado correctamente*
 ╰─────────────────❒`; break
 
         case 22: // Cambiar foto
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *REGISTRO DEL SISTEMA*
+            txt = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: registro del sistema*
 │
-│ 📸 *CAMBIO DE FOTO*
-│ 👤 *Usuario:* ${usuario}
-│ 🖼️ *Nueva imagen establecida*
-│ 💻 *Grupo:* ${group}
+│ 📸 *cambio de foto*
+│ 👤 *usuario:* ${usuario}
+│ 🖼️ *nueva imagen establecida*
+│ 💻 *grupo:* ${group}
 │
-│ > *“Imagen actualizada en el sistema”* 🤖
+│ > *💿 Antitop Dice: imagen actualizada en el sistema*
 ╰─────────────────❒`; break
 
         case 23: // Cambiar link
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🛡️ *ALERTA DE SEGURIDAD*
+            txt = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🪩 *Antitop Dice: alerta de seguridad*
 │
-│ 🔗 *LINK RESETEADO*
-│ 👤 *Usuario:* ${usuario}
-│ 💻 *Grupo:* ${group}
+│ 🔗 *link reseteado*
+│ 👤 *usuario:* ${usuario}
+│ 💻 *grupo:* ${group}
 │
-│ > *“Protocolo de enlace modificado”* ⚡
+│ > *🥥 Antitop Dice: protocolo de enlace modificado*
 ╰─────────────────❒`; break
 
         case 25: // Cambiar ajustes
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🛡️ *AJUSTES MODIFICADOS*
+            txt = `╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: ajustes modificados*
 │
-│ 👤 *Usuario:* ${usuario}
-│ ⚙️ *Permisos:* ${m.messageStubParameters[0] == 'on'? '*SOLO ADMINS* 🔒' : '*TODOS* 🔓'}
-│ 📊 *Edición de info de grupo*
+│ 👤 *usuario:* ${usuario}
+│ ⚙️ *permisos:* ${m.messageStubParameters[0] == 'on'? '*solo admins* 🔒' : '*todos* 🔓'}
+│ 📊 *edicion de info de grupo*
 │
-│ > *“Permisos del sistema actualizados”* ⚡
+│ > *🐆 Antitop Dice: permisos del sistema actualizados*
 ╰─────────────────❒`; break
 
         case 26: // Abrir/Cerrar
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 💻 *ESTADO DEL SISTEMA*
+            txt = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: estado del sistema*
 │
-│ 👤 *Usuario:* ${usuario}
-│ 🗣️ *Modo:* ${m.messageStubParameters[0] == 'on'? '*SOLO ADMINS* 🔒' : '*TODOS* 🔓'}
-│ 📢 *Grupo:* ${m.messageStubParameters[0] == 'on'? 'CERRADO' : 'ABIERTO'}
+│ 👤 *usuario:* ${usuario}
+│ 🗣️ *modo:* ${m.messageStubParameters[0] == 'on'? '*solo admins* 🔒' : '*todos* 🔓'}
+│ 📢 *grupo:* ${m.messageStubParameters[0] == 'on'? 'cerrado' : 'abierto'}
 │
-│ > *“Modo de comunicación actualizado”* 🤖
+│ > *🪩 Antitop Dice: modo de comunicacion actualizado*
 ╰─────────────────❒`; break
 
         case 29: // Dar admin
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 👑 *ASCENSO DE RANGO*
+            txt = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: ascenso de rango*
 │
-│ ⚡ *Nuevo Admin:* @${m.messageStubParameters[0].split('@')[0]}
-│ 👤 *Otorgado por:* ${usuario}
-│ 💻 *Rango:* Administrador
+│ ⚡ *nuevo admin:* @${m.messageStubParameters[0].split('@')[0]}
+│ 👤 *otorgado por:* ${usuario}
+│ 💻 *rango:* administrador
 │
-│ > *“Acceso de administrador concedido”* ⚡
+│ > *💿 Antitop Dice: acceso de administrador concedido*
 ╰─────────────────❒`; break
 
         case 30: // Quitar admin
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 📉 *RANGO REVOCADO*
+            txt = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🪩 *Antitop Dice: rango revocado*
 │
-│ 💥 *Admin removido:* @${m.messageStubParameters[0].split('@')[0]}
-│ 👤 *Ejecutado por:* ${usuario}
-│ 🗑️ *Permisos eliminados*
+│ 💥 *admin removido:* @${m.messageStubParameters[0].split('@')[0]}
+│ 👤 *ejecutado por:* ${usuario}
+│ 🗑️ *permisos eliminados*
 │
-│ > *“Acceso de administrador revocado”* ⚡
+│ > *🥥 Antitop Dice: acceso de administrador revocado*
 ╰─────────────────❒`; break
 
         case WAMessageStubType.GROUP_PARTICIPANT_ADD:
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🤖 *NUEVO USUARIO CONECTADO*
+            txt = `╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: nuevo usuario conectado*
 │
-│ 🔥 *Bienvenido:* @${m.messageStubParameters[0].split('@')[0]}
-│ 💻 *Sistema:* ${group}
-│ ⚡ *Estado:* Conexión registrada
+│ 🔥 *bienvenido:* @${m.messageStubParameters[0].split('@')[0]}
+│ 💻 *sistema:* ${group}
+│ 🥥 *estado:* conexion registrada
 │
-│ > *“Nuevo nodo agregado al sistema”* ⚡
+│ > *🐆 Antitop Dice: nuevo nodo agregado al sistema*
 ╰─────────────────❒`; break
 
         case WAMessageStubType.GROUP_PARTICIPANT_LEAVE:
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 💨 *DESCONEXIÓN REGISTRADA*
+            txt = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🪩 *Antitop Dice: desconexion registrada*
 │
-│ 😔 *Se fue:* @${m.messageStubParameters[0].split('@')[0]}
-│ 💻 *Sistema:* ${group}
-│ 🌫️ *Estado:* Abandonó el sistema
+│ 😔 *se fue:* @${m.messageStubParameters[0].split('@')[0]}
+│ 💻 *sistema:* ${group}
+│ 💿 *estado:* abandono el sistema
 │
-│ > *“Nodo desconectado”* 🤖
+│ > *🥥 Antitop Dice: nodo desconectado*
 ╰─────────────────❒`; break
 
         case WAMessageStubType.GROUP_PARTICIPANT_REMOVE:
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🚮 *EXPULSIÓN EJECUTADA*
+            txt = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: expulsion ejecutada*
 │
-│ 💣 *Eliminado:* @${m.messageStubParameters[0].split('@')[0]}
-│ 👤 *Por orden de:* ${usuario}
-│ ⚡ *Causa:* Violación de protocolos
+│ 💣 *eliminado:* @${m.messageStubParameters[0].split('@')[0]}
+│ 👤 *por orden de:* ${usuario}
+│ 💿 *causa:* violacion de protocolos
 │
-│ > *“Protocolo de seguridad aplicado”* 🤖
+│ > *🪩 Antitop Dice: protocolo de seguridad aplicado*
 ╰─────────────────❒`; break
     }
 
