@@ -3,24 +3,24 @@ import fetch from "node-fetch"
 import yts from 'yt-search'
 
 let handler = async (m, { conn, text, command, usedPrefix }) => {
-    if (!text) return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *CENTRAL DE DESCARGAS*
+    if (!text) return conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: central de descargas*
 │
-│ 🤖 *YouTube:*
-│ 💻 *.play* nombre = Audio YT
-│ 💻 *.play2* nombre = Video YT
-│ 💻 *.ytmp3* link/nombre = Audio Directo
-│ 💻 *.ytmp4* link/nombre = Video 720p Directo
+│ 🐆 *youtube:*
+│ 💿 *.play* nombre = audio yt
+│ 💿 *.play2* nombre = video yt
+│ 🪩 *.ytmp3* link/nombre = audio directo
+│ 🪩 *.ytmp4* link/nombre = video 720p directo
 │
-│ 🤖 *Música y Social:*
-│ 💻 *.spotify* nombre = Audio SP
-│ 💻 *.tiktok* link = Video TT
-│ 💻 *.tiktoksearch* texto = Buscar TT
-│ 💻 *.ig* link = Instagram
-│ 💻 *.fb* link = Facebook
-│ 💻 *.mediafire* link = MediaFire
+│ 🐆 *musica y social:*
+│ 💿 *.spotify* nombre = audio sp
+│ 🥥 *.tiktok* link = video tt
+│ 🥥 *.tiktoksearch* texto = buscar tt
+│ 🪩 *.ig* link = instagram
+│ 💿 *.fb* link = facebook
+│ 🐆 *.mediafire* link = mediafire
 │
-│ > *“Descarga procesada por Cyber Bot AI”*
+│ > *“descarga procesada por Antitop Bot AI”*
 ╰─────────────────❒`, m)
 
     await m.react('⏳')
@@ -39,22 +39,22 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 
             let isVideo = command === 'play2'
             let apiUrl = isVideo
-             ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${keySasuke}`
+            ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${keySasuke}`
                 : `https://api.evogb.org/dl/ytmp3?url=${encodeURIComponent(vid.url)}&key=${keySasuke}`
 
             let json = await (await fetch(apiUrl)).json()
             if (!json.status) throw 'YT_DL_ERROR'
 
-            let cap = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *YOUTUBE ${isVideo? 'VIDEO' : 'AUDIO'}*
+            let cap = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: youtube ${isVideo? 'video' : 'audio'}*
 │
-│ 📌 *Título:* ${vid.title}
-│ ⏳ *Duración:* ${vid.timestamp}
-│ 👤 *Autor:* ${vid.author.name}
-│ 👁️ *Vistas:* ${vid.views.toLocaleString()}
-│ 📁 *Formato:* ${isVideo? 'MP4 720p' : 'MP3 320kbps'}
+│ 📌 *titulo:* ${vid.title}
+│ ⏳ *duracion:* ${vid.timestamp}
+│ 👤 *autor:* ${vid.author.name}
+│ 👁️ *vistas:* ${vid.views.toLocaleString()}
+│ 📁 *formato:* ${isVideo? 'mp4 720p' : 'mp3 320kbps'}
 │
-│ > *“Extrayendo datos del servidor”*
+│ > *“extrayendo datos del servidor”*
 ╰─────────────────❒`
 
             await conn.sendMessage(m.chat, { image: { url: vid.thumbnail }, caption: cap }, { quoted: m })
@@ -76,21 +76,21 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 
             let isVideo = command === 'ytmp4'
             let apiUrl = isVideo
-              ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${keySasuke}`
+             ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${keySasuke}`
                 : `https://api.evogb.org/dl/ytmp3?url=${encodeURIComponent(vid.url)}&key=${keySasuke}`
 
             let json = await (await fetch(apiUrl)).json()
             if (!json.status) throw 'YT_DL_ERROR'
 
-            let cap = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *YOUTUBE ${isVideo? 'VIDEO' : 'AUDIO'} DIRECTO*
+            let cap = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: youtube ${isVideo? 'video' : 'audio'} directo*
 │
-│ 📌 *Título:* ${vid.title}
-│ 📁 *Formato:* ${isVideo? 'MP4 720p' : 'MP3'}
-│ ⏱️ *Duración:* ${vid.timestamp}
-│ 👁️ *Vistas:* ${vid.views.toLocaleString()}
+│ 📌 *titulo:* ${vid.title}
+│ 📁 *formato:* ${isVideo? 'mp4 720p' : 'mp3'}
+│ ⏱️ *duracion:* ${vid.timestamp}
+│ 👁️ *vistas:* ${vid.views.toLocaleString()}
 │
-│ > *“Descarga iniciada por el sistema”*
+│ > *“descarga iniciada por el sistema”*
 ╰─────────────────❒`
 
             await conn.sendMessage(m.chat, { image: { url: vid.thumbnail }, caption: cap }, { quoted: m })
@@ -116,16 +116,16 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             let dlData = await dlRes.json()
             if (!dlData.status) throw 'SP_DL_ERROR'
 
-            let cap = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🎵 *SPOTIFY DOWNLOADER*
+            let cap = `╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: spotify downloader*
 │
-│ ⚡ *Título:* ${dlData.data.name}
-│ 👤 *Artista:* ${dlData.data.artist}
-│ 💿 *Álbum:* ${dlData.data.album}
-│ ⏳ *Duración:* ${dlData.data.duration}
-│ 📅 *Año:* ${dlData.data.year}
+│ 🥥 *titulo:* ${dlData.data.name}
+│ 👤 *artista:* ${dlData.data.artist}
+│ 🐆 *album:* ${dlData.data.album}
+│ ⏳ *duracion:* ${dlData.data.duration}
+│ 📅 *año:* ${dlData.data.year}
 │
-│ > *“Música procesada por Cyber Bot”*
+│ > *“musica procesada por Antitop Bot”*
 ╰─────────────────❒`
 
             await conn.sendMessage(m.chat, { image: { url: dlData.data.image }, caption: cap }, { quoted: m })
@@ -140,15 +140,15 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
                 let video = res.data[0]
                 if (!video) throw 'TT_NOT_FOUND'
 
-                let caption = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *TIKTOK SEARCH*
+                let caption = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🪩 *Antitop Dice: tiktok search*
 │
-│ 💻 *Título:* ${video.title}
-│ 👤 *Autor:* ${video.author.nickname}
-│ 👁️ *Vistas:* ${video.play_count.toLocaleString()}
-│ ❤️ *Likes:* ${video.digg_count.toLocaleString()}
+│ 💿 *titulo:* ${video.title}
+│ 👤 *autor:* ${video.author.nickname}
+│ 👁️ *vistas:* ${video.play_count.toLocaleString()}
+│ ❤️ *likes:* ${video.digg_count.toLocaleString()}
 │
-│ > *“Video encontrado en la base de datos”*
+│ > *“video encontrado en la base de datos”*
 ╰─────────────────❒`
                 await conn.sendFile(m.chat, video.dl, 'tiktok.mp4', caption, m)
             } else {
@@ -156,13 +156,13 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
                 let data = res.data
                 if (!data) throw 'TT_DL_ERROR'
 
-                let caption = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *TIKTOK DOWNLOADER*
+                let caption = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: tiktok downloader*
 │
-│ 💻 *Título:* ${data.title}
-│ 👤 *Autor:* ${data.author.nickname}
+│ 🐆 *titulo:* ${data.title}
+│ 👤 *autor:* ${data.author.nickname}
 │
-│ > *“Descargado por el sistema”*
+│ > *“descargado por el sistema”*
 ╰─────────────────❒`
                 await conn.sendFile(m.chat, Array.isArray(data.dl)? data.dl[0] : data.dl, 'tiktok.mp4', caption, m)
             }
@@ -174,15 +174,15 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             const { data } = await axios.get(`https://api.evogb.org/dl/instagram?url=${encodeURIComponent(text)}&key=${keyEvo}`)
             if (!data.status) throw 'IG_ERROR'
             let media = data.data[0]
-            let type = media.type === 'video'? 'VIDEO' : 'IMAGEN'
+            let type = media.type === 'video'? 'video' : 'imagen'
 
-            let cap = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 📸 *INSTAGRAM DOWNLOADER*
+            let cap = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: instagram downloader*
 │
-│ ⚡ *Tipo:* ${type}
-│ 💻 *Estado:* Enviando contenido
+│ 💿 *tipo:* ${type}
+│ 🪩 *estado:* enviando contenido
 │
-│ > *“Contenido capturado por el sistema”*
+│ > *“contenido capturado por el sistema”*
 ╰─────────────────❒`
 
             await conn.sendMessage(m.chat, {
@@ -199,13 +199,13 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             if (!data.status) throw 'FB_ERROR'
             let video = data.resultados[0]
 
-            let cap = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 📘 *FACEBOOK DOWNLOADER*
+            let cap = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: facebook downloader*
 │
-│ ⚡ *Calidad:* ${video.calidad || 'HD'}
-│ 💻 *Estado:* Enviando video
+│ 🐆 *calidad:* ${video.calidad || 'hd'}
+│ 💿 *estado:* enviando video
 │
-│ > *“Video extraído por el sistema”*
+│ > *“video extraido por el sistema”*
 ╰─────────────────❒`
 
             await conn.sendMessage(m.chat, {
@@ -223,14 +223,14 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             if (!result.status ||!result.data) throw 'MF_ERROR'
 
             let { name, size, date, dl } = result.data
-            let caption = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 📦 *MEDIAFIRE DOWNLOADER*
+            let caption = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🪩 *Antitop Dice: mediafire downloader*
 │
-│ 🏷 *Nombre:* ${name}
-│ ⚖ *Tamaño:* ${size}
-│ 📅 *Fecha:* ${date}
+│ 🏷 *nombre:* ${name}
+│ ⚖ *tamaño:* ${size}
+│ 📅 *fecha:* ${date}
 │
-│ > *“Archivo extraído del servidor”*
+│ > *“archivo extraido del servidor”*
 ╰─────────────────❒`
 
             await conn.sendFile(m.chat, dl, name, caption, m)
@@ -241,21 +241,21 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
         console.error(e)
         await m.react('❌')
         let msgs = {
-            YT_NOT_FOUND: 'No se encontró el video',
-            YT_DL_ERROR: 'Error al procesar la descarga de YouTube',
-            SP_NOT_FOUND: `No se encontraron resultados para: ${text}`,
-            SP_DL_ERROR: 'Error al obtener el enlace de Spotify',
-            TT_NOT_FOUND: 'No se encontraron resultados en TikTok',
-            TT_DL_ERROR: 'No se pudo obtener el video de TikTok',
-            IG_ERROR: 'Error al procesar el enlace de Instagram',
-            FB_ERROR: 'Error al procesar el video de Facebook',
-            MF_ERROR: 'No se pudo localizar el archivo de MediaFire'
+            YT_NOT_FOUND: 'no se encontro el video',
+            YT_DL_ERROR: 'error al procesar la descarga de youtube',
+            SP_NOT_FOUND: `no se encontraron resultados para: ${text}`,
+            SP_DL_ERROR: 'error al obtener el enlace de spotify',
+            TT_NOT_FOUND: 'no se encontraron resultados en tiktok',
+            TT_DL_ERROR: 'no se pudo obtener el video de tiktok',
+            IG_ERROR: 'error al procesar el enlace de instagram',
+            FB_ERROR: 'error al procesar el video de facebook',
+            MF_ERROR: 'no se pudo localizar el archivo de mediafire'
         }
-        m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+        m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: error de sistema*
 │
-│ ⚡ *${msgs[e] || 'Error inesperado'}*
-│ 🤖 *Verifica el enlace/búsqueda*
+│ 🥥 *${msgs[e] || 'error inesperado'}*
+│ 🐆 *Antitop Dice: verifica el enlace/busqueda*
 ╰─────────────────❒`)
     }
 }
