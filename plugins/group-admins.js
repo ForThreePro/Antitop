@@ -1,10 +1,10 @@
 const handler = async (m, { conn, command }) => {
   if (!m.mentionedJid[0] &&!m.quoted) {
-    let texto = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🛡️ *CONTROL DE ADMIN*
+    let texto = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: control de admin*
 │
-│ ⚡ *Menciona o responde al usuario*
-│ 💻 *para ${command === 'promote' || command === 'promover' || command === 'daradmin'? 'promover' : 'degradar'} como administrador*
+│ 🐆 *menciona o responde al usuario*
+│ 💿 *para ${command === 'promote' || command === 'promover' || command === 'daradmin'? 'promover' : 'degradar'} como administrador*
 ╰─────────────────❒`
     return m.reply(texto, m.chat, { mentions: conn.parseMention(texto) })
   }
@@ -13,21 +13,21 @@ const handler = async (m, { conn, command }) => {
   let action = /^(promote|promover|daradmin)$/i.test(command)? 'promote' : 'demote'
 
   let msgAccion = action === 'promote'
-  ? `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *PROMOCIÓN*
+ ? `╭─❒ *『 Antitop Bot 』* ❒
+│ 🪩 *Antitop Dice: promocion*
 │
-│ 👑 *@${user.split('@')[0]} ahora es Administrador*
-│ 🤖 *Acción por:* @${m.sender.split('@')[0]}
+│ 👑 *@${user.split('@')[0]} ahora es administrador*
+│ 💿 *accion por:* @${m.sender.split('@')[0]}
 │
-│ > *“Permisos otorgados por el sistema”*
+│ > *“permisos otorgados por el sistema”*
 ╰─────────────────❒`
-    : `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *DEGRADACIÓN*
+    : `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: degradacion*
 │
-│ 🛡️ *@${user.split('@')[0]} ya no es Administrador*
-│ 🤖 *Acción por:* @${m.sender.split('@')[0]}
+│ 🛡️ *@${user.split('@')[0]} ya no es administrador*
+│ 🐆 *accion por:* @${m.sender.split('@')[0]}
 │
-│ > *“Permisos revocados por el sistema”*
+│ > *“permisos revocados por el sistema”*
 ╰─────────────────❒`
 
   await conn.groupParticipantsUpdate(m.chat, [user], action)
