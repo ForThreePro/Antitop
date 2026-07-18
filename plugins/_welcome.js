@@ -26,8 +26,8 @@ export async function before(m, { conn }) {
     const user = `@${userName}`;
 
     // [DATOS DEL GRUPO]
-    const groupName = groupMetadata.subject || 'Mi Sistema';
-    const groupDesc = groupMetadata.desc?.toString() || '📜 Sin descripción';
+    const groupName = groupMetadata.subject || 'mi sistema';
+    const groupDesc = groupMetadata.desc?.toString() || '📜 sin descripcion';
     const groupMembers = groupMetadata.participants.length;
 
     const fixedImageUrl = 'https://files.evogb.win/FXbFDD.jpg'; // [TU LOGO SOLO SI NO TIENE FOTO]
@@ -48,56 +48,56 @@ export async function before(m, { conn }) {
 
     let text = '', audioFile = '';
 
-    // [SWITCH DISEÑO CYBER BOT]
+    // [SWITCH DISEÑO ANTITOP BOT]
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
       audioFile = './bienvenida.mp3';
       text = chat.customWelcome
- ? chat.customWelcome.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *NUEVO USUARIO CONECTADO*
+? chat.customWelcome.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: nuevo usuario conectado*
 │
-│ 🤖 *Bienvenido:* ${user}
-│ ⚡ *Se ha conectado al sistema*
+│ 🐆 *bienvenido:* ${user}
+│ 💿 *Antitop Dice: se ha conectado al sistema*
 │
-│ 💻 *Sistema:* ${groupName}
-│ 👥 *Usuarios:* ${groupMembers}
-│ 📜 *Descripción:* ${groupDesc}
+│ 🪩 *sistema:* ${groupName}
+│ 👥 *usuarios:* ${groupMembers}
+│ 📜 *descripcion:* ${groupDesc}
 │
-│ > *“Nuevo nodo agregado al sistema”*
+│ > *“nuevo nodo agregado al sistema”*
 ╰─────────────────❒`.trim();
 
     } else if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
       audioFile = './despedida.mp3';
       text = chat.customBye
- ? chat.customBye.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 💨 *DESCONEXIÓN REGISTRADA*
+? chat.customBye.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `╭─❒ *『 Antitop Bot 』* ❒
+│ 🪩 *Antitop Dice: desconexion registrada*
 │
-│ 🌫️ *Se desconectó:* ${user}
-│ ⚡ *Nodo fuera de línea*
+│ 🌫️ *se desconecto:* ${user}
+│ 🥥 *Antitop Dice: nodo fuera de linea*
 │
-│ 💻 *Sistema:* ${groupName}
-│ 👥 *Quedan:* ${groupMembers}
-│ 📜 *Motivo:* Desconexión voluntaria
+│ 💿 *sistema:* ${groupName}
+│ 👥 *quedan:* ${groupMembers}
+│ 📜 *motivo:* desconexion voluntaria
 │
-│ > *“Nodo desconectado del sistema”*
+│ > *“nodo desconectado del sistema”*
 ╰─────────────────❒`.trim();
 
     } else if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE) {
       audioFile = './kick.mp3';
       text = chat.customKick
- ? chat.customKick.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🚮 *EXPULSIÓN EJECUTADA*
+? chat.customKick.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: expulsion ejecutada*
 │
-│ 💣 *Eliminado:* ${user}
-│ ⚡ *Protocolo de seguridad aplicado*
+│ 💣 *eliminado:* ${user}
+│ 🥥 *Antitop Dice: protocolo de seguridad aplicado*
 │
-│ 💻 *Sistema:* ${groupName}
-│ 👥 *Quedan:* ${groupMembers}
-│ 📜 *Motivo:* Violó protocolos del sistema
+│ 💿 *sistema:* ${groupName}
+│ 👥 *quedan:* ${groupMembers}
+│ 📜 *motivo:* violo protocolos del sistema
 │
-│ > *“Acceso denegado por violación”*
+│ > *“acceso denegado por violacion”*
 ╰─────────────────❒`.trim();
     } else return true;
 
