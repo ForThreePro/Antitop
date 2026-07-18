@@ -1,44 +1,44 @@
 import axios from 'axios'
 
 let handler = async (m, { conn, text }) => {
-    if (!text) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🎵 *BUSCADOR DE LETRAS*
+    if (!text) return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: buscador de letras*
 │
-│ 🤖 *¿Qué canción buscas?*
-│ ⚡ *Uso:*.letra Imagine Dragons
+│ 🐆 *que cancion buscas*
+│ 💿 *uso:*.letra Imagine Dragons
 ╰─────────────────❒`)
 
     await m.react('🎵')
     try {
         let { data } = await axios.get(`https://api.delirius.store/search/lyrics?query=${encodeURIComponent(text)}`)
         let res = data.data
-        if (!res) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *SIN RESULTADOS*
+        if (!res) return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🪩 *Antitop Dice: sin resultados*
 │
-│ ⚡ *No encontré la letra de:* ${text}
+│ 🥥 *no encontre la letra de:* ${text}
 ╰─────────────────❒`)
 
-        let txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🎵 *LETRA ENCONTRADA*
+        let txt = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: letra encontrada*
 │
-│ ⚡ *Título:* ${res.title}
-│ 👤 *Artista:* ${res.artists}
-│ ⏳ *Duración:* ${res.duration || 'N/A'}
+│ 💿 *titulo:* ${res.title}
+│ 👤 *artista:* ${res.artists}
+│ ⏳ *duracion:* ${res.duration || 'n/a'}
 ╰─────────────────❒\n\n`
-        txt += `╭─── 💻 𝗟𝗘𝗧𝗥𝗔 𝗦𝗜𝗦𝗧𝗘𝗠𝗔 ───╮\n`
+        txt += `╭─── 🥥 *letra sistema* ───╮\n`
         txt += `${res.lyrics}\n`
         txt += `╰─────────────────────────╯\n\n`
-        txt += `> *“La música procesada por Cyber Bot AI”* ⚡\n> *© Cyber Bot System*`
+        txt += `> *“la musica procesada por Antitop Bot AI”* 💿\n> *© Antitop Bot System*`
 
         m.reply(txt)
         await m.react('✅')
     } catch { 
         await m.react('❌')
-        m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+        m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: error de sistema*
 │
-│ ⚡ *Falló al buscar la letra*
-│ 🤖 *Intenta de nuevo*
+│ 🥥 *fallo al buscar la letra*
+│ 🐆 *Antitop Dice: intenta de nuevo*
 ╰─────────────────❒`)
     }
 }
