@@ -4,10 +4,10 @@ import path from 'path'
 let user = a => '@' + a.split('@')[0]
 
 function handler(m, { groupMetadata, command, conn, text, usedPrefix}) {
-if (!text) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🏆 *TOP 10*
+if (!text) return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: top 10*
 │
-│ ⚡ *Ejemplo:*.top gente mas activa
+│ 🐆 *ejemplo:*.top gente mas activa
 ╰─────────────────❒`)
 
 let ps = groupMetadata.participants.map(v => v.id)
@@ -22,24 +22,24 @@ let h = ps.getRandom()
 let i = ps.getRandom()
 let j = ps.getRandom()
 let k = Math.floor(Math.random() * 70);
-let x = `${pickRandom(['✅','📊','💻','🤖','🔥','💀','😎','🤙','👑','💥'])}`
+let x = `${pickRandom(['🥥','🐆','💿','🪩','🔥','👑','😎','🤙','💥','📊'])}`
 let vn = `https://hansxd.nasihosting.com/sound/sound${k}.mp3`
 
-let top = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🏆 *TOP 10: ${text.toUpperCase()}*
+let top = `╭─❒ *『 Antitop Bot 』* ❒
+│ ${x} *Antitop Dice: top 10: ${text}*
 │
 │ 👑 *1.* ${user(a)}
 │ 👑 *2.* ${user(b)}
 │ 👑 *3.* ${user(c)}
-│ 💻 *4.* ${user(d)}
-│ 💻 *5.* ${user(e)}
-│ 💻 *6.* ${user(f)}
-│ 💻 *7.* ${user(g)}
-│ 💻 *8.* ${user(h)}
-│ 💻 *9.* ${user(i)}
-│ 💻 *10.* ${user(j)}
+│ 💿 *4.* ${user(d)}
+│ 💿 *5.* ${user(e)}
+│ 💿 *6.* ${user(f)}
+│ 💿 *7.* ${user(g)}
+│ 💿 *8.* ${user(h)}
+│ 💿 *9.* ${user(i)}
+│ 💿 *10.* ${user(j)}
 │
-│ > *“El sistema elige a los mejores”*
+│ > *“el sistema elige a los mejores”*
 ╰─────────────────❒`
 
 m.reply(top, null, { mentions: [a, b, c, d, e, f, g, h, i, j]})
