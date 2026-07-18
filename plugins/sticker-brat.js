@@ -17,7 +17,7 @@ throw error
 }}
 const fetchStickerVideo = async (text) => {
 const response = await axios.get(`https://skyzxu-brat.hf.space/brat-animated`, { params: { text }, responseType: 'arraybuffer' })
-if (!response.data) throw new Error('Error al obtener el video de la API.')
+if (!response.data) throw new Error('error al obtener el video de la api.')
 return response.data
 }
 const fetchJson = (url, options) =>
@@ -31,18 +31,18 @@ let texto2 = packstickers.text2 || global.packsticker2
 switch (command) {
 case 'brat': {
 text = m.quoted?.text || text
-if (!text) return conn.sendMessage(m.chat, { text: '❀ Por favor, responde a un mensaje o ingresa un texto para crear el Sticker.' }, { quoted: m })
+if (!text) return conn.sendMessage(m.chat, { text: '🥥 Antitop Dice: responde a un mensaje o ingresa un texto para crear el sticker.' }, { quoted: m })
 await m.react('🕒')
 const buffer = await fetchSticker(text)
 const stiker = await sticker(buffer, false, texto1, texto2)
-if (!stiker) throw new Error('ꕥ No se pudo generar el sticker.')
+if (!stiker) throw new Error('💿 no se pudo generar el sticker.')
 await conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
 await m.react('✔️')
 break
 }
 case 'bratv': {
 text = m.quoted?.text || text
-if (!text) return conn.sendMessage(m.chat, { text: '❀ Por favor, responde a un mensaje o ingresa un texto para crear el Sticker.' }, { quoted: m })
+if (!text) return conn.sendMessage(m.chat, { text: '🥥 Antitop Dice: responde a un mensaje o ingresa un texto para crear el sticker.' }, { quoted: m })
 await m.react('🕒')
 const videoBuffer = await fetchStickerVideo(text)
 const stickerBuffer = await sticker(videoBuffer, null, texto1, texto2)
@@ -51,11 +51,11 @@ await m.react('✔️')
 break
 }
 case 'emojimix': {
-if (!args[0]) return m.reply(`❀ Ingresa 2 emojis para combinar.\n> Ejemplo: *${usedPrefix + command}* 👻+👀`)
+if (!args[0]) return m.reply(`🐆 Antitop Dice: ingresa 2 emojis para combinar.\n> ejemplo: *${usedPrefix + command}* 👻+👀`)
 let [emoji1, emoji2] = text.split`+`
 await m.react('🕒')
 const res = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
-if (!res.results || res.results.length === 0) throw new Error('ꕥ No se encontraron stickers para esos emojis.')
+if (!res.results || res.results.length === 0) throw new Error('💿 no se encontraron stickers para esos emojis.')
 for (let result of res.results) {
 let stiker = await sticker(false, result.url, texto1, texto2)
 await conn.sendFile(m.chat, stiker, null, { asSticker: true }, m)
@@ -65,15 +65,15 @@ break
 }
 case 'qc': {
 let textFinal = args.join(' ') || m.quoted?.text
-if (!textFinal) return conn.reply(m.chat, `❀ Ingresa un texto para crear el sticker.`, m)
-let target = m.quoted ? await m.quoted.sender : m.sender
+if (!textFinal) return conn.reply(m.chat, `🥥 Antitop Dice: ingresa un texto para crear el sticker.`, m)
+let target = m.quoted? await m.quoted.sender : m.sender
 const pp = await conn.profilePictureUrl(target).catch((_) => 'https://telegra.ph/file/24fa902ead26340f3df2c.png')
-const nombre = await (async () => global.db.data.users[target].name || (async () => { try { const n = await conn.getName(target); return typeof n === 'string' && n.trim() ? n : target.split('@')[0] } catch { return target.split('@')[0] } })())()
+const nombre = await (async () => global.db.data.users[target].name || (async () => { try { const n = await conn.getName(target); return typeof n === 'string' && n.trim()? n : target.split('@')[0] } catch { return target.split('@')[0] } })())()
 const mentionRegex = new RegExp(`@${target.split('@')[0]}`, 'g')
 let frase = textFinal.replace(mentionRegex, '')
-if (frase.length > 30) return await m.react('✖️'), conn.reply(m.chat, `ꕥ El texto no puede tener más de 30 caracteres.`, m)
+if (frase.length > 30) return await m.react('✖️'), conn.reply(m.chat, `💿 el texto no puede tener mas de 30 caracteres.`, m)
 await m.react('🕒')
-const quoteObj = { type: 'quote', format: 'png', backgroundColor: '#000000', width: 512, height: 768, scale: 2, messages: [{ entities: [], avatar: true, from: { id: 1, name: nombre, photo: { url: pp } }, text: frase, replyMessage: {} }]}
+const quoteObj = { type: 'quote', format: 'png', backgroundColor: '#000', width: 512, height: 768, scale: 2, messages: [{ entities: [], avatar: true, from: { id: 1, name: nombre, photo: { url: pp } }, text: frase, replyMessage: {} }]}
 const json = await axios.post('https://bot.lyo.su/quote/generate', quoteObj, { headers: { 'Content-Type': 'application/json' }})
 const buffer = Buffer.from(json.data.result.image, 'base64')
 const stiker = await sticker(buffer, false, texto1, texto2)
@@ -84,10 +84,10 @@ await conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
 break
 }
 case 'take': case 'wm': {
-if (!m.quoted) return m.reply(`❀ Responde a un sticker con el comando *${usedPrefix + command}* seguido del nuevo nombre.\n> Ejemplo: *${usedPrefix + command}* NuevoNombre`)
+if (!m.quoted) return m.reply(`🐆 Antitop Dice: responde a un sticker con el comando *${usedPrefix + command}* seguido del nuevo nombre.\n> ejemplo: *${usedPrefix + command}* nuevonombre`)
 await m.react('🕒')
 const stickerData = await m.quoted.download()
-if (!stickerData) return await m.react('✖️'), m.reply('ꕥ No se pudo descargar el sticker.')
+if (!stickerData) return await m.react('✖️'), m.reply('💿 no se pudo descargar el sticker.')
 const parts = text.split(/[\u2022|]/).map(p => p.trim())
 const nuevoPack = parts[0] || texto1
 const nuevoAutor = parts[1] || texto2
@@ -97,11 +97,11 @@ await m.react('✔️')
 break
 }}} catch (e) {
 await m.react('✖️')
-conn.sendMessage(m.chat, { text: `⚠︎ Se ha producido un problema.\n> Usa *${usedPrefix}report* para informarlo.\n\n${e.message}` }, { quoted: m })
+conn.sendMessage(m.chat, { text: `🪩 Antitop Dice: se ha producido un problema.\n> usa *${usedPrefix}report* para informarlo.\n\n${e.message}` }, { quoted: m })
 }}
 
 handler.tags = ['sticker']
-handler.help = ['brat', 'bratv']
-handler.command = ['brat', 'bratv']
+handler.help = ['brat', 'bratv', 'emojimix', 'qc', 'take']
+handler.command = ['brat', 'bratv', 'emojimix', 'qc', 'take', 'wm']
 
 export default handler
