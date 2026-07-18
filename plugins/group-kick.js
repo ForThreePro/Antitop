@@ -1,10 +1,10 @@
 let handler = async (m, { conn, participants, usedPrefix, command }) => {
     let mentionedJid = m.mentionedJid && m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : null
 
-    if (!mentionedJid) return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🚮 *EXPULSAR USUARIO*
+    if (!mentionedJid) return conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: expulsar usuario*
 │
-│ ⚡ *Menciona a un usuario o responde a un mensaje*
+│ 🐆 *menciona a un usuario o responde a un mensaje*
 ╰─────────────────❒`, m)
 
     try {
@@ -12,35 +12,35 @@ let handler = async (m, { conn, participants, usedPrefix, command }) => {
         let ownerGroup = groupMetadata.owner || m.chat.split`-`[0] + '@s.whatsapp.net'
         let ownerBot = global.owner[0][0] + '@s.whatsapp.net'
 
-        if (mentionedJid === conn.user.jid) return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+        if (mentionedJid === conn.user.jid) return conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: error de sistema*
 │
-│ ⚡ *No puedo expulsarme a mi mismo*
+│ 🪩 *no puedo expulsarme a mi mismo*
 ╰─────────────────❒`, m)
-        if (mentionedJid === ownerGroup) return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+        if (mentionedJid === ownerGroup) return conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: error de sistema*
 │
-│ ⚡ *No puedo expulsar al creador del grupo*
+│ 🪩 *no puedo expulsar al creador del grupo*
 ╰─────────────────❒`, m)
-        if (mentionedJid === ownerBot) return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+        if (mentionedJid === ownerBot) return conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: error de sistema*
 │
-│ ⚡ *No puedo expulsar al dueño del bot*
+│ 🪩 *no puedo expulsar al dueño del bot*
 ╰─────────────────❒`, m)
 
         await conn.groupParticipantsUpdate(m.chat, [mentionedJid], 'remove')
-        conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🚮 *USUARIO EXPULSADO*
+        conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: usuario expulsado*
 │
-│ ⚡ *@${mentionedJid.split('@')[0]} fue sacado del grupo*
-│ 💻 *Protocolo de seguridad ejecutado*
+│ 🐆 *@${mentionedJid.split('@')[0]} fue sacado del grupo*
+│ 💿 *protocolo de seguridad ejecutado*
 ╰─────────────────❒`, m, { mentions: [mentionedJid] })
     } catch (e) {
-        conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+        conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: error de sistema*
 │
-│ ⚡ *Ocurrió un problema*
-│ 🤖 *${e.message}*
+│ 🥥 *ocurrio un problema*
+│ 🐆 *${e.message}*
 ╰─────────────────❒`, m)
     }
 }
