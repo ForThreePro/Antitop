@@ -1,18 +1,18 @@
 let handler = async (m, { conn }) => {
     try {
         await conn.groupParticipantsUpdate(m.chat, [conn.user.jid], 'promote')
-        m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 👑 *AUTOPROMOTE*
+        m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: autopromote*
 │
-│ ✅ *Estado:* Admin asignado
-│ 💻 *El sistema toma el control*
+│ 💿 *estado:* admin asignado
+│ 🐆 *el sistema toma el control*
 ╰─────────────────❒`)
     } catch (e) {
-        m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR AUTOPROMOTE*
+        m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: error autopromote*
 │
-│ ⚠️ *No pude asignarme admin*
-│ 💻 *Dame permisos primero*
+│ 💿 *no pude asignarme admin*
+│ 🥥 *dame permisos primero*
 ╰─────────────────❒`)
     }
 }
