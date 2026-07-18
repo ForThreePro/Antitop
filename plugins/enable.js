@@ -7,7 +7,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
   let bot = global.db.data.settings[conn.user.jid] || {}
   let type = command.toLowerCase()
 
-  if (!args[0]) return m.reply(`⚡ *CYBER BOT CONFIG* 💻\n\n🤖 *Configuración incorrecta.*\n📌 *Uso:* ${usedPrefix + command} on/off\n*Ejemplo:* ${usedPrefix + command} on`)
+  if (!args[0]) return m.reply(`🥥 *Antitop Dice: config* 💿\n\n🐆 *configuracion incorrecta.*\n📌 *uso:* ${usedPrefix + command} on/off\n*ejemplo:* ${usedPrefix + command} on`)
 
   let fail = false
   switch (type) {
@@ -60,21 +60,21 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
 
   if (fail) return
 
-  // SOLO IMAGEN LOCAL cyber.jpg
-  const pathImg = join(process.cwd(), 'storage', 'img', 'cyber.jpg')
-  let cyberImg = existsSync(pathImg)? readFileSync(pathImg) : null
+  // IMAGEN LOCAL antitop.jpg
+  const pathImg = join(process.cwd(), 'storage', 'img', 'antitop.jpg')
+  let antitopImg = existsSync(pathImg)? readFileSync(pathImg) : null
 
-  let estadoTexto = isEnable? 'Activado ⚡' : 'Desactivado ❌'
-  let emoji = isEnable? '⚡' : '💻'
+  let estadoTexto = isEnable? 'activado 🥥' : 'desactivado ❌'
+  let emoji = isEnable? '🥥' : '💿'
 
-  let statusTxt = `${emoji} *CYBER BOT CONFIG* 💻\n\n`
-  statusTxt += `⚡ *Función:* ${type}\n`
-  statusTxt += `📊 *Estado:* ${estadoTexto}\n\n`
-  statusTxt += `🤖 *Cyber Bot System*`
+  let statusTxt = `${emoji} *Antitop Dice: config* 💿\n\n`
+  statusTxt += `🐆 *funcion:* ${type}\n`
+  statusTxt += `📊 *estado:* ${estadoTexto}\n\n`
+  statusTxt += `💿 *Antitop Bot System*`
 
-  if (cyberImg) {
+  if (antitopImg) {
     await conn.sendMessage(m.chat, {
-      image: cyberImg,
+      image: antitopImg,
       caption: statusTxt,
       mentions: [m.sender]
     }, { quoted: m })
