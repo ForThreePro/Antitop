@@ -8,23 +8,23 @@ import axios from 'axios'
 
 global.owner = [
   [ '51936994155', 'Barboza OFC 🌃', true ],
-  [ '573155227977', 'Jota 🐼', true ]
+  [ '56920592945', 'Anto 🐼', true ]
 ]
 
 global.mods = []
 global.prems = []
 
-global.packname = `[ 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 ⚡`
-global.author = '𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡]'
-global.stickpack = '© 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡'
-global.stickauth = '𝘽𝙮 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩'
-global.wm = '𝘾𝙮𝙗𝙚𝙧 ⚡'
-global.botname = '[ 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡ ]'
-global.textbot = `𝙋ο𝙬𝙚𝙧𝙚𝙙 𝙗𝙮 𝘾𝙮𝙗𝙚𝙧 🌀`
-global.dev = '• 𝙋ο𝙬𝙚𝙧𝙚𝙙 𝙗𝙮 𝘾ο𝙢𝙢𝙪𝙣𝙞𝙩𝙮 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡'
-global.wait = '⚡ *𝘼𝙜𝙪𝙖𝙧𝙙𝙚 𝙪𝙣 𝙢ο𝙢𝙚𝙣𝙩ο, 𝙚𝙨𝙘𝙖𝙣𝙚𝙖𝙣𝙙𝙤 𝙨𝙞𝙨𝙩𝙚𝙢𝙖... 🤖\n\n> 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡*'
-global.listo = '*𝘼𝙦𝙪𝙞 𝙩𝙞𝙚𝙣𝙚 𝙟𝙚𝙛𝙚 🤖*'
-global.namechannel = '𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡'
+global.packname = `🥥 [ Antitop Bot ]`
+global.author = 'Antitop Bot 🐆'
+global.stickpack = '© Antitop Bot 💿'
+global.stickauth = 'By Antitop 🪩'
+global.wm = 'Antitop'
+global.botname = '[ Antitop Bot ]'
+global.textbot = `Powered by Antitop 🥥`
+global.dev = '• Powered by Community Antitop Bot 🐆'
+global.wait = '💿 Antitop Dice: aguarde un momento, escaneando sistema...'
+global.listo = '🪩 Antitop Dice: aqui tiene jefe'
+global.namechannel = 'Antitop Bot 🥥'
 global.channel = 'https://whatsapp.com/channel/0029Vaua0ZD3gvWjQaIpSy18'
 
 global.rayo = fs.readFileSync('./storage/img/rayo.jpg')
