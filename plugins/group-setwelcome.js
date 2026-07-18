@@ -1,10 +1,10 @@
 const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     if (!m.isGroup || (!isAdmin &&!isOwner)) {
-        return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ACCESO DENEGADO*
+        return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: acceso denegado*
 │
-│ ⚡ *Solo los admins o el dueño*
-│ 🤖 *pueden ejecutar este comando*
+│ 🥥 *solo los admins o el dueño*
+│ 🐆 *pueden ejecutar este comando*
 ╰─────────────────❒`);
     }
 
@@ -13,44 +13,44 @@ const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     chat = global.db.data.chats[m.chat]
 
     if (command === 'setwelcome') {
-        if (!text) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 👋 *CONFIGURAR BIENVENIDA*
+        if (!text) return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🪩 *Antitop Dice: configurar bienvenida*
 │
-│ ⚡ *Falta el mensaje*
+│ 🥥 *falta el mensaje*
 │
-│ 📝 *Placeholders:*
-│ @user = Mención
-│ @group = Grupo  
-│ @count = Miembros
-│ @desc = Descripción
+│ 📝 *placeholders:*
+│ @user = mencion
+│ @group = grupo  
+│ @count = miembros
+│ @desc = descripcion
 │
-│ 💡 *Ejemplo:*
-│ .setwelcome ✅ @user se unió al servidor 💻
-│ 🤖 Bienvenido a @group
-│ 👥 Miembro #@count
+│ 💿 *ejemplo:*
+│ .setwelcome ✅ @user se unio al servidor 🐆
+│ 🪩 bienvenido a @group
+│ 👥 miembro #@count
 ╰─────────────────❒`);
         chat.customWelcome = text.trim();
-        return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ✅ *BIENVENIDA GUARDADA*
+        return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: bienvenida guardada*
 │
-│ 📝 *Vista previa:*
+│ 📝 *vista previa:*
 │ \`\`${text.trim()}\`\`
 │
-│ 🗑️ *Para borrar:* .delwelcome
+│ 💿 *para borrar:* .delwelcome
 ╰─────────────────❒`);
     }
     if (command === 'delwelcome') {
-        if (!chat.customWelcome) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚠️ *SIN BIENVENIDA*
+        if (!chat.customWelcome) return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: sin bienvenida*
 │
-│ 🤖 *No tienes una bienvenida editada*
+│ 🪩 *no tienes una bienvenida editada*
 ╰─────────────────❒`);
         delete chat.customWelcome;
-        return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ✅ *BIENVENIDA ELIMINADA*
+        return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: bienvenida eliminada*
 │
-│ 🗑️ *Se borró el mensaje personalizado*
-│ 💻 *Ahora se usa la de welcome.js*
+│ 💿 *se borro el mensaje personalizado*
+│ 🐆 *ahora se usa la de welcome.js*
 ╰─────────────────❒`);
     }
 };
