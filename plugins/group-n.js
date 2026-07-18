@@ -2,45 +2,45 @@ let mutedUsers = new Set();
 
 let handler = async (m, { conn, command, participants }) => {
     let mentionedJid = m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : false;
-    if (!mentionedJid) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🔇 *SISTEMA DE MUTE*
+    if (!mentionedJid) return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: sistema de mute*
 │
-│ ⚡ *Etiqueta a una persona o responde a un mensaje*
+│ 🐆 *etiqueta a una persona o responde a un mensaje*
 ╰─────────────────❒`);
 
     let isUserAdmin = participants.find(p => p.id === mentionedJid)?.admin;
-    if (isUserAdmin) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+    if (isUserAdmin) return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: error de sistema*
 │
-│ ⚡ *No puedes mutear a un administrador*
+│ 🪩 *no puedes mutear a un administrador*
 ╰─────────────────❒`);
-    if (mentionedJid === conn.user.jid) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+    if (mentionedJid === conn.user.jid) return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: error de sistema*
 │
-│ ⚡ *No puedo mutearme a mi mismo*
+│ 🪩 *no puedo mutearme a mi mismo*
 ╰─────────────────❒`);
 
     if (command === "mute") {
         mutedUsers.add(mentionedJid);
-        conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🔇 *USUARIO SILENCIADO*
+        conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: usuario silenciado*
 │
-│ ⚡ *@${mentionedJid.split('@')[0]}*
-│ 💻 *Sus mensajes serán eliminados*
+│ 🐆 *@${mentionedJid.split('@')[0]}*
+│ 💿 *sus mensajes seran eliminados*
 ╰─────────────────❒`, m, { mentions: [mentionedJid] });
     } else if (command === "unmute") {
         mutedUsers.delete(mentionedJid);
-        conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🔊 *USUARIO DESMUTEADO*
+        conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 🪩 *Antitop Dice: usuario desmuteado*
 │
-│ ⚡ *@${mentionedJid.split('@')[0]}*
-│ 💻 *Ya puede hablar de nuevo*
+│ 🥥 *@${mentionedJid.split('@')[0]}*
+│ 🐆 *ya puede hablar de nuevo*
 ╰─────────────────❒`, m, { mentions: [mentionedJid] });
     }
 };
 
 handler.before = async (m, { conn, isAdmin }) => {
-    // Si el remitente del mensaje está en la lista de muteados, eliminamos el mensaje
+    // si el remitente del mensaje esta en la lista de muteados, eliminamos el mensaje
     if (mutedUsers.has(m.sender)) {
         try {
             await conn.sendMessage(m.chat, { delete: m.key });
