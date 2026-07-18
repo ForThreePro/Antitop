@@ -6,30 +6,30 @@ let handler = async (m, { conn, args, isOwner }) => {
 
   if (/on/i.test(args[0])) {
     bot.antiSpam = true
-    await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *ANTI-SPAM ACTIVADO*
+    await conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: anti-spam activado*
 │
-│ 🤖 *Estado:* ENCENDIDO
-│ 🛡️ *Filtro:* Stickers + Emojis
-│ ⚡ *El sistema vigila el flood*
+│ 🐆 *estado:* encendido
+│ 💿 *filtro:* stickers + emojis
+│ 🪩 *Antitop Dice: el sistema vigila el flood*
 ╰─────────────────❒`, m)
   } else if (/off/i.test(args[0])) {
     bot.antiSpam = false
-    await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ANTI-SPAM DESACTIVADO*
+    await conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: anti-spam desactivado*
 │
-│ 🤖 *Estado:* APAGADO
-│ ✅ *Se permiten stickers y emojis*
+│ 💿 *estado:* apagado
+│ 🪩 *Antitop Dice: se permiten stickers y emojis*
 ╰─────────────────❒`, m)
   } else {
-    await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 💻 *PANEL ANTI-SPAM*
+    await conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: panel anti-spam*
 │
-│ 📌 *Uso:*.antispam on /.antispam off
-│ ⚡ *Función:* Anti flood de stickers/emojis
-│ 🛡️ *Límite:* 4 avisos | 6 expulsión
+│ 🥥 *uso:*.antispam on /.antispam off
+│ 🐆 *funcion:* anti flood de stickers/emojis
+│ 💿 *limite:* 4 avisos | 6 expulsion
 │
-│ 🤖 *Mantén el sistema limpio*
+│ 🪩 *Antitop Dice: mantén el sistema limpio*
 ╰─────────────────❒`, m)
   }
 }
@@ -68,11 +68,11 @@ handler.before = async function (m, { conn, isAdmin, isBotAdmin, isOwner, isROwn
 
   if (isOwner || isROwner) {
     if (count === warnLimit) {
-      await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 👑 *AVISO AL OWNER*
+      await conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: aviso al owner*
 │
-│ ⚡ *Bájale al spam creador*
-│ 🌀 *Estás saturando el sistema*
+│ 🐆 *bajale al spam creador*
+│ 💿 *estas saturando el sistema*
 ╰─────────────────❒`, m)
     }
     return
@@ -81,25 +81,25 @@ handler.before = async function (m, { conn, isAdmin, isBotAdmin, isOwner, isROwn
   if (m.isGroup && (isAdmin || isPrems ||!isBotAdmin)) return
 
   if (count === warnLimit) {
-    await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚠️ *¡DETECCIÓN DE SPAM!*
+    await conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 🪩 *Antitop Dice: deteccion de spam*
 │
-│ ⚡ *Usuario:* @${sender.split('@')[0]}
-│ 📊 *Progreso:* ${count}/${kickLimit}
-│ 🤖 *Advertencia:* Baja al flood
+│ 🥥 *usuario:* @${sender.split('@')[0]}
+│ 🐆 *progreso:* ${count}/${kickLimit}
+│ 💿 *Antitop Dice: baja al flood*
 │
-│ > *Sigue así y activa el protocolo*
+│ > *sigue asi y activa el protocolo*
 ╰─────────────────❒`, m, { mentions: [sender] })
   }
   else if (count >= kickLimit) {
-    await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *EXPULSIÓN EJECUTADA*
+    await conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: expulsion ejecutada*
 │
-│ 🚮 *Usuario:* @${sender.split('@')[0]}
-│ 📌 *Causa:* Spam de stickers/emojis
-│ 🤖 *Protocolo de seguridad activado*
+│ 🐆 *usuario:* @${sender.split('@')[0]}
+│ 💿 *causa:* spam de stickers/emojis
+│ 🪩 *Antitop Dice: protocolo de seguridad activado*
 │
-│ > *Sistema protegido por Cyber Bot*
+│ > *sistema protegido por Antitop Bot*
 ╰─────────────────❒`, m, { mentions: [sender] })
     if (m.isGroup) {
       await conn.groupParticipantsUpdate(m.chat, [sender], 'remove')
