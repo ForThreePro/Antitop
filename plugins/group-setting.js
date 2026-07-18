@@ -5,16 +5,16 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     }[(args[0] || '')]
 
     if (isClose === undefined) {
-        await conn.reply(m.chat, `⚡ *CYBER BOT GRUPO* 💻\n\n🤖 *Elija una opción:*\n*${usedPrefix + command}* abrir\n*${usedPrefix + command}* cerrar`, m) // Cambiado
+        await conn.reply(m.chat, `🥥 *Antitop Dice: grupo* 🐆\n\n💿 *elige una opcion:*\n*${usedPrefix + command}* abrir\n*${usedPrefix + command}* cerrar`, m)
         return
     }
 
     await conn.groupSettingUpdate(m.chat, isClose)
 
-    // Aviso de la acción realizada
+    // aviso de la accion realizada
     let estado = isClose === 'announcement'? 'cerrado 🔒' : 'abierto 🔓'
     let emoji = isClose === 'announcement'? '❌' : '✅'
-    await conn.reply(m.chat, `${emoji} *CYBER BOT* ➔ Grupo ${estado}\n🤖 *Acción por:* @${m.sender.split('@')[0]}\n💻 *Cyber Bot System*`, m, { // Cambiado
+    await conn.reply(m.chat, `${emoji} *Antitop Dice* ➔ grupo ${estado}\n🪩 *accion por:* @${m.sender.split('@')[0]}\n💿 *Antitop Bot System*`, m, {
         mentions: [m.sender]
     })
 }
