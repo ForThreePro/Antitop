@@ -2,7 +2,7 @@ import fetch from "node-fetch"
 import FormData from "form-data"
 import crypto from "crypto"
 
-const MARCA = 'Cyber Bot ⚡' // <- TU MARCA
+const MARCA = 'Antitop Bot ⚡' // <- TU MARCA
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
     const key = Buffer.from('c2FzdWtl', 'base64').toString('utf-8')
@@ -11,15 +11,15 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let urlTarget = text? text.trim() : ''
 
     if (!urlTarget &&!/image\/(jpe?g|png)/.test(mime)) {
-        return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *HD UPSCALER AI*
+        return conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: hd upscaler ai*
 │
-│ 🤖 *Uso correcto:*
-│ Responde a una imagen o envía
+│ 🐆 *uso correcto:*
+│ responde a una imagen o envia
 │ un link con: *${usedPrefix + command}*
 │
-│ 🖼️ *Formatos:* JPG / PNG
-│ ⚡ *Procesado con IA*
+│ 💿 *formatos:* jpg / png
+│ 🪩 *Antitop Dice: procesado con ia*
 ╰─────────────────❒`, m)
     }
 
@@ -48,11 +48,11 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
                 finalUrl = jsonUpload.url
             } else {
                 await m.react('❌')
-                return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+                return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: error de sistema*
 │
-│ 🔴 *No se pudo subir la imagen*
-│ ⚡ *Motivo:* ${jsonUpload?.message || 'Sin respuesta'}
+│ 🔴 *no se pudo subir la imagen*
+│ 💿 *motivo:* ${jsonUpload?.message || 'sin respuesta'}
 ╰─────────────────❒`)
             }
         }
@@ -63,23 +63,23 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         if (contentType && contentType.includes("application/json")) {
             let jsonDl = await resDl.json()
             await m.react('❌')
-            return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE API*
+            return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🪩 *Antitop Dice: error de api*
 │
-│ ⚡ *${jsonDl.message || 'No se pudo mejorar la imagen.'}*
+│ 🥥 *${jsonDl.message || 'no se pudo mejorar la imagen.'}*
 ╰─────────────────❒`)
         }
 
         let buffer = await resDl.buffer()
-        let info = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ✨ *IMAGEN MEJORADA*
+        let info = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: imagen mejorada*
 │
-│ 🤖 *Estado:* Procesado con IA
-│ ⚡ *Comando:* ${command.toUpperCase()}
-│ 👑 *Bot:* Cyber Bot
-│ 🔌 *API:* evogb.org
+│ 💿 *estado:* procesado con ia
+│ 🪩 *comando:* ${command.toUpperCase()}
+│ 🥥 *bot:* Antitop Bot
+│ 🔌 *api:* evogb.org
 │
-│ > *“Resolución optimizada al 4K”*
+│ > *“resolucion optimizada al 4k”*
 ╰─────────────────❒`
 
         await conn.sendMessage(m.chat, { image: buffer, caption: info }, { quoted: m })
@@ -88,11 +88,11 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     } catch (e) {
         console.error(e)
         await m.react('❌')
-        m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚠️ *ERROR DE SISTEMA*
+        m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: error de sistema*
 │
-│ ⚡ *Servidores saturados o error*
-│ 🤖 *Intenta de nuevo en unos seg*
+│ 🥥 *servidores saturados o error*
+│ 🐆 *Antitop Dice: intenta de nuevo en unos seg*
 ╰─────────────────❒`)
     }
 }
