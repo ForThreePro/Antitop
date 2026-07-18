@@ -5,11 +5,11 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       return;
     }
 
-    const customMessage = args.join(' ') || '⚡ Notificación del Sistema';
-    const groupMetadata = await conn.groupMetadata(m.chat).catch(() => ({ subject: 'Grupo', participants: [] }));
+    const customMessage = args.join(' ') || '🥥 Antitop Dice: notificacion del sistema';
+    const groupMetadata = await conn.groupMetadata(m.chat).catch(() => ({ subject: 'grupo', participants: [] }));
     const groupName = groupMetadata.subject;
 
-    // Lista de banderas por prefijo
+    // lista de banderas por prefijo
     const countryFlags = [
       { prefijo: '502', bandera: '🇬🇹' }, { prefijo: '503', bandera: '🇸🇻' },
       { prefijo: '504', bandera: '🇭🇳' }, { prefijo: '505', bandera: '🇳🇮' },
@@ -27,7 +27,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       { prefijo: '91', bandera: '🇮🇳' }, { prefijo: '61', bandera: '🇦🇺' },
       { prefijo: '64', bandera: '🇳🇿' }, { prefijo: '1', bandera: '🇺🇸' },
       { prefijo: '7', bandera: '🇷🇺' }, { prefijo: '63', bandera: '🇵🇭' },
-      { prefijo: '95', bandera: '🇲🇲' }
+      { prefijo: '95', bandera: '🇲' }
     ];
 
     const getCountryFlag = (mem) => {
@@ -42,7 +42,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       return '🚩';
     };
 
-    // Agrupar participantes por bandera
+    // agrupar participantes por bandera
     const grouped = {};
     for (const mem of participants) {
       const flag = getCountryFlag(mem);
@@ -52,20 +52,20 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
 
     const orderedFlags = countryFlags.map(c => c.bandera).concat(['🚩']);
 
-    // Texto con estética Cyber Bot
-    let messageText = `ᯇ 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 💻 ୧
+    // texto con estetica Antitop Bot
+    let messageText = `ᯇ *Antitop Bot* 🥥 ୧
 
- ⤷ ┇ 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢𝗡 𝗚𝗘𝗡𝗘𝗥𝗔𝗟 ：✿ 。
+ ⤷ ┇ *Antitop Dice: notificacion general* ：✿ 。
 ꒰ ◞⁺⊹ ．grupo • ${groupName}
 
- ꒱ ׁ. ᘏ 𝗆𝖾𝗇𝗌⍺𝗃𝖾 ׅ 𝆬
-🤖 ${customMessage} ࣪ ꕀ ˚
-> *"Conectando a todos los usuarios"*
+ ꒱ ׁ. ᘏ *mensaje* ׅ 𝆬
+🐆 ${customMessage} ࣪ ꕀ ˚
+> *"conectando a todos los usuarios"*
 
 ──愛 *INTEGRANTES* ╏ 📊
-👥 Total: ${participants.length} usuarios
+👥 total: ${participants.length} usuarios
 
-──💻 *LISTA POR PAÍS* 💻──
+──💿 *LISTA POR PAIS* 💿──
 `
 
     for (const flag of orderedFlags) {
@@ -78,19 +78,19 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       }
     }
 
-    messageText += `.⃟𖥔 ݁💻𖦹˙— *CYBER BOT SYSTEM* —˙𖦹💻꒷
-🤖 Creador: Whois Yallico 👑
-💻 Versión: 3.1.5 Cyber Clean
+    messageText += `.⃟𖥔 ݁💿𖦹˙— *ANTITOP BOT SYSTEM* —˙𖦹💿꒷
+🪩 creador: Antitop Team 👑
+💿 version: 1.0 Antitop Clean
 
-> *"Sistema conectado a todos"* 💻
+> *"sistema conectado a todos"* 🥥
  ㅤ└──.✦ ── ⊰ ̟!!.✦. `;
 
-    // NUEVO: Detectar foto del grupo
+    // detectar foto del grupo
     let img
     try {
-      img = await conn.profilePictureUrl(m.chat, 'image') // Foto del grupo
+      img = await conn.profilePictureUrl(m.chat, 'image') // foto del grupo
     } catch {
-      img = 'https://files.evogb.win/jgBvm8.jpg' // Fallback cyber
+      img = 'https://files.evogb.win/jgBvm8.jpg' // fallback antitop
     }
 
     await conn.sendMessage(m.chat, {
@@ -100,11 +100,11 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
     }, { quoted: m });
 
   } catch (error) {
-    console.error("[ERROR EN CYBER BOT]:", error);
-    conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+    console.error("[ERROR EN ANTITOP BOT]:", error);
+    conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: error de sistema*
 │
-│ ⚡ *Ocurrió un error al ejecutar el comando*
+│ 🥥 *ocurrio un error al ejecutar el comando*
 ╰─────────────────❒`, m);
   }
 };
