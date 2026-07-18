@@ -6,64 +6,64 @@ let handler = async (m, { conn, participants, groupMetadata, command }) => {
         const groupAdmins = participants.filter(p => p.admin)
         const owner = groupMetadata.owner || groupAdmins.find(p => p.admin === 'superadmin')?.id || m.chat.split`-`[0] + '@s.whatsapp.net'
 
-        let text = `⚡✧･ﾟ: *💻 𝙶𝙳𝙲 - 𝙲𝚈𝙱𝙴𝚁 𝙱𝙾𝚃 💻* :ﾟ･✧⚡
+        let text = `🥥✧･ﾟ: *💿 gdc - antitop bot 💿* :ﾟ･✧🥥
 
-👑 𝗦𝗜𝗦𝗧𝗘𝗠𝗔: ${groupMetadata.subject}
-⏰ 𝗛𝗢𝗥𝗔𝗥𝗜𝗢: __:__ 🇦🇷 / __:__ 🇵🇪
+👑 *sistema:* ${groupMetadata.subject}
+⏰ *horario:* __:__ 🇦🇷 / __:__ 🇵🇪
 
 ╭──────────────╮
-│ㅤ⚡ 𝗘𝗤𝗨𝗜𝗣𝗢 ➹𝟏
+│🐆 *equipo* ➹1
 │
 │👑 ➤ ・
-│🤖 ➤ ・
-│🤖 ➤ ・
-│🤖 ➤ ・
+│💿 ➤ ・
+│🪩 ➤ ・
+│🥥 ➤ ・
 │
-│⚡ 𝗘𝗤𝗨𝗜𝗣𝗢 ➹𝟐
-│
-│👑 ➤ ・
-│🤖 ➤ ・
-│🤖 ➤ ・
-│🤖 ➤ ・
-│
-│⚡ 𝗘𝗤𝗨𝗜𝗣𝗢 ➹𝟑
+│🐆 *equipo* ➹2
 │
 │👑 ➤ ・
-│🤖 ➤ ・
-│🤖 ➤ ・
-│🤖 ➤ ・
+│💿 ➤ ・
+│🪩 ➤ ・
+│🥥 ➤ ・
 │
-│⚡ 𝗘𝗤𝗨𝗜𝗣𝗢 ➹𝟒
-│
-│👑 ➤ ・
-│🤖 ➤ ・
-│🤖 ➤ ・
-│🤖 ➤ ・
-│
-│⚡ 𝗘𝗤𝗨𝗜𝗣𝗢 ➹𝟓
+│🐆 *equipo* ➹3
 │
 │👑 ➤ ・
-│🤖 ➤ ・
-│🤖 ➤ ・
-│🤖 ➤ ・
+│💿 ➤ ・
+│🪩 ➤ ・
+│🥥 ➤ ・
 │
-│⚡ 𝗘𝗤𝗨𝗜𝗣𝗢 ➹𝟔
+│🐆 *equipo* ➹4
 │
 │👑 ➤ ・
-│🤖 ➤ ・
-│🤖 ➤ ・
-│🤖 ➤ ・
+│💿 ➤ ・
+│🪩 ➤ ・
+│🥥 ➤ ・
 │
-│ㅤ💻 𝗥𝗘𝗦𝗘𝗥𝗩𝗔𝗦:
-│⚡ ➤ ・
-│⚡ ➤ ・
-│⚡ ➤ ・
-│⚡ ➤ ・
-│⚡ ➤ ・
-│⚡ ➤ ・
+│🐆 *equipo* ➹5
+│
+│👑 ➤ ・
+│💿 ➤ ・
+│🪩 ➤ ・
+│🥥 ➤ ・
+│
+│🐆 *equipo* ➹6
+│
+│👑 ➤ ・
+│💿 ➤ ・
+│🪩 ➤ ・
+│🥥 ➤ ・
+│
+│💿 *reservas:*
+│🐆 ➤ ・
+│🥥 ➤ ・
+│🪩 ➤ ・
+│💿 ➤ ・
+│🐆 ➤ ・
+│🥥 ➤ ・
 ╰─────────────╯
 
-⚡✧･ﾟ: *Completen y copien* :ﾟ･✧⚡`.trim()
+🥥✧･ﾟ: *Antitop Dice: completen y copien* :ﾟ･✧🥥`.trim()
 
         return await conn.sendFile(m.chat, pp, 'gdc.jpg', text, m, false, { mentions: [...groupAdmins.map(v => v.id), owner] })
     }
@@ -74,33 +74,33 @@ let handler = async (m, { conn, participants, groupMetadata, command }) => {
 
     let listaTitulares = ''
     for(let i = 1; i <= titulares; i++) {
-        listaTitulares += `⚡ ${i}. ・\n`
+        listaTitulares += `🐆 ${i}. ・\n`
     }
 
     let listaSuplentes = ''
     for(let i = 1; i <= suplentes; i++) {
-        listaSuplentes += `💻 ${i}. ・\n`
+        listaSuplentes += `💿 ${i}. ・\n`
     }
 
-    let plantilla = `⚡✧･ﾟ: *💻 𝙲𝚈𝙱𝙴𝚁 𝙱𝙾𝚃 💻* :ﾟ･✧⚡
+    let plantilla = `🥥✧･ﾟ: *💿 antitop bot 💿* :ﾟ･✧🥥
 
-👑 𝗔𝗗𝗠𝗜𝗡: ・
-⏰ 𝗛𝗢𝗥𝗔: __:__ 🇦🇷 / __:__ 🇵🇪
+👑 *admin:* ・
+⏰ *hora:* __:__ 🇦🇷 / __:__ 🇵🇪
 
 ───────────────
-    ⚡ 𝗧𝗜𝗧𝗨𝗟𝗔𝗥𝗘𝗦 ⚡
+    🐆 *titulares* 🐆
 ───────────────
 ${listaTitulares}
 ───────────────
-   💻 𝗥𝗘𝗦𝗘𝗥𝗩𝗔𝗦 💻
+   💿 *reservas* 💿
 ───────────────
 ${listaSuplentes}
 ───────────────
-   🎁 𝗔𝗡𝗙𝗜𝗧𝗥𝗜𝗢𝗡 🎁
+   🪩 *anfitrion* 🪩
 ───────────────
-⚡ ・
+🥥 ・
 
-⚡✧･ﾟ: *Completen y copien* :ﾟ･✧⚡`
+🥥✧･ﾟ: *Antitop Dice: completen y copien* :ﾟ･✧🥥`
 
     await conn.sendMessage(m.chat, { text: plantilla }, { quoted: m })
 }
