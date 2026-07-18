@@ -2,9 +2,9 @@ const linkRegex = /chat\.whatsapp\.com\/(?:invite\/)?([0-9A-Za-z]{20,24})/i
 const channelLinkRegex = /whatsapp\.com\/channel\/([0-9A-Za-z]{20,30})/i
 
 const handler = async (m, { conn, args, isAdmin, isOwner }) => {
-    if (!isAdmin &&!isOwner) throw `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🛡️ *ACCESO DENEGADO*
-│ Solo *ADMINS* pueden usar esto
+    if (!isAdmin &&!isOwner) throw `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: acceso denegado*
+│ solo *admins* pueden usar esto
 ╰─────────────────❒`
 
     let chat = global.db.data.chats[m.chat]
@@ -12,30 +12,30 @@ const handler = async (m, { conn, args, isAdmin, isOwner }) => {
 
     if (/on/i.test(args[0])) {
         chat.antiLink = true
-        await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *ANTI-LINK ACTIVADO*
+        await conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: anti-link activado*
 │
-│ 🤖 *Estado:* ENCENDIDO
-│ 🛡️ *Bloqueo:* Grupos + Canales
-│ ⚡ *El sistema vigila el grupo*
+│ 💿 *estado:* encendido
+│ 🪩 *bloqueo:* grupos + canales
+│ 🥥 *Antitop Dice: el sistema vigila el grupo*
 ╰─────────────────❒`, m)
     } else if (/off/i.test(args[0])) {
         chat.antiLink = false
-        await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ANTI-LINK DESACTIVADO*
+        await conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: anti-link desactivado*
 │
-│ 🤖 *Estado:* APAGADO
-│ ✅ *Ya se pueden enviar links*
+│ 💿 *estado:* apagado
+│ 🪩 *Antitop Dice: ya se pueden enviar links*
 ╰─────────────────❒`, m)
     } else {
-        await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 💻 *PANEL ANTI-LINK*
+        await conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: panel anti-link*
 │
-│ 📌 *Uso:*.antilink on /.antilink off
-│ ⚡ *Función:* Bloquea links externos
-│ 🛡️ *Protege:* Spam de grupos y canales
+│ 🥥 *uso:*.antilink on /.antilink off
+│ 🐆 *funcion:* bloquea links externos
+│ 💿 *protege:* spam de grupos y canales
 │
-│ 🤖 *Mantén seguro el sistema*
+│ 🪩 *Antitop Dice: mantén seguro el sistema*
 ╰─────────────────❒`, m)
     }
 }
@@ -67,14 +67,14 @@ handler.before = async function (m, { conn, isAdmin, isBotAdmin }) {
         await conn.sendMessage(m.chat, { delete: m.key })
         await conn.reply(
             m.chat,
-            `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚠️ *¡ENLACE NO AUTORIZADO!*
+            `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: enlace no autorizado*
 │
-│ 🚮 *Usuario:* @${m.sender.split('@')[0]}
-│ ⚡ *Motivo:* Enviar link externo
-│ 🛡️ *Acción:* Expulsado del sistema
+│ 🚮 *usuario:* @${m.sender.split('@')[0]}
+│ 🐆 *motivo:* enviar link externo
+│ 💿 *accion:* expulsado del sistema
 │
-│ > *Regla:* Prohibido el spam 🤖*
+│ > *🪩 Antitop Dice: regla prohibido el spam*
 ╰─────────────────❒`,
             m,
             { mentions: [m.sender] }
