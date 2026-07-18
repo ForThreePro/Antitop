@@ -5,11 +5,11 @@ import { fileTypeFromBuffer } from "file-type"
 let handler = async (m, { conn }) => {
   let q = m.quoted ? m.quoted : m
   let mime = (q.msg || q).mimetype || ''
-  if (!mime) return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚠️ *ERROR DE SISTEMA*
+  if (!mime) return conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: error de sistema*
 │
-│ 🤖 *Responde a un archivo válido*
-│ ⚡ *Formatos:* Imagen, Video, Audio, Doc
+│ 🐆 *responde a un archivo valido*
+│ 💿 *formatos:* imagen, video, audio, doc
 ╰─────────────────❒`, m)
 
   try {
@@ -20,15 +20,15 @@ let handler = async (m, { conn }) => {
 
     if (!link.success) throw new Error()
 
-    let txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ☁️ *ARCHIVO SUBIDO A LA NUBE*
+    let txt = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🪩 *Antitop Dice: archivo subido a la nube*
 │
-│ 🔗 *Enlace:* ${link.url}
-│ 🆔 *ID:* ${link.id}
-│ 📊 *Tamaño:* ${formatBytes(media.length)}
-│ ⚡ *Servidor:* evogb.win
+│ 🔗 *enlace:* ${link.url}
+│ 🆔 *id:* ${link.id}
+│ 📊 *tamaño:* ${formatBytes(media.length)}
+│ 💿 *servidor:* evogb.win
 │
-│ > *“Archivo almacenado en el servidor”*
+│ > *“archivo almacenado en el servidor”*
 ╰─────────────────❒`
 
     await conn.sendFile(m.chat, media, 'file.' + link.url.split('.').pop(), txt, m)
@@ -36,11 +36,11 @@ let handler = async (m, { conn }) => {
   } catch (e) {
     console.error(e)
     await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
-    await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SUBIDA*
+    await conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: error de subida*
 │
-│ ⚡ *No se pudo subir el archivo*
-│ 🤖 *Intenta de nuevo en unos seg*
+│ 🥥 *no se pudo subir el archivo*
+│ 💿 *Antitop Dice: intenta de nuevo en unos seg*
 ╰─────────────────❒`, m)
   }
 }
@@ -52,8 +52,8 @@ handler.command = ['upp', 'tourl']
 export default handler
 
 function formatBytes(bytes) {
-  if (bytes === 0) return '0 B'
-  const sizes = ['B', 'KB', 'MB', 'GB', 'TB']
+  if (bytes === 0) return '0 b'
+  const sizes = ['b', 'kb', 'mb', 'gb', 'tb']
   const i = Math.floor(Math.log(bytes) / Math.log(1024))
   return `${(bytes / 1024 ** i).toFixed(2)} ${sizes[i]}`
 }
