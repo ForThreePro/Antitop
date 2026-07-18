@@ -1,10 +1,10 @@
 const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     if (!m.isGroup || (!isAdmin &&!isOwner)) {
-        return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ACCESO DENEGADO*
+        return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: acceso denegado*
 │
-│ ⚡ *Solo los admins o el dueño*
-│ 🤖 *pueden ejecutar comandos*
+│ 🥥 *solo los admins o el dueño*
+│ 🐆 *pueden ejecutar comandos*
 ╰─────────────────❒`);
     }
 
@@ -13,35 +13,35 @@ const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     chat = global.db.data.chats[m.chat]
 
     if (command === 'setkick') {
-        if (!text) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🚫 *CONFIGURAR KICK*
+        if (!text) return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🪩 *Antitop Dice: configurar kick*
 │
-│ ⚡ *Falta el mensaje*
+│ 🥥 *falta el mensaje*
 │
-│ 💡 *Ejemplo:*
-│ .setkick 🚫 @user fue expulsado del servidor 💻
+│ 💿 *ejemplo:*
+│ .setkick 🚫 @user fue expulsado del servidor 🐆
 ╰─────────────────❒`);
         chat.customKick = text.trim();
-        return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ✅ *KICK GUARDADO*
+        return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: kick guardado*
 │
-│ 📝 *Vista previa:*
+│ 📝 *vista previa:*
 │ \`\`${text.trim()}\`\`
 │
-│ 🗑️ *Para borrar:* .delkick
+│ 💿 *para borrar:* .delkick
 ╰─────────────────❒`);
     }
     if (command === 'delkick') {
-        if (!chat.customKick) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚠️ *SIN KICK*
+        if (!chat.customKick) return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: sin kick*
 │
-│ 🤖 *No tienes un kick personalizado*
+│ 🪩 *no tienes un kick personalizado*
 ╰─────────────────❒`);
         delete chat.customKick;
-        return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ✅ *KICK ELIMINADO*
+        return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: kick eliminado*
 │
-│ 🗑️ *Se borró el mensaje personalizado*
+│ 💿 *se borro el mensaje personalizado*
 ╰─────────────────❒`);
     }
 };
