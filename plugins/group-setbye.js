@@ -1,10 +1,10 @@
 const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     if (!m.isGroup || (!isAdmin &&!isOwner)) {
-        return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ACCESO DENEGADO*
+        return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: acceso denegado*
 │
-│ ⚡ *Solo los admins o el dueño*
-│ 🤖 *pueden controlar el sistema*
+│ 🥥 *solo los admins o el dueño*
+│ 🐆 *pueden controlar el sistema*
 ╰─────────────────❒`);
     }
 
@@ -13,35 +13,35 @@ const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     chat = global.db.data.chats[m.chat]
 
     if (command === 'setbye') {
-        if (!text) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 👋 *CONFIGURAR DESPEDIDA*
+        if (!text) return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🪩 *Antitop Dice: configurar despedida*
 │
-│ ⚡ *Falta el mensaje*
+│ 🥥 *falta el mensaje*
 │
-│ 💡 *Ejemplo:*
-│ .setbye 💨 @user salió del servidor 💻
+│ 💿 *ejemplo:*
+│ .setbye 💨 @user salio del servidor 🐆
 ╰─────────────────❒`);
         chat.customBye = text.trim();
-        return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ✅ *DESPEDIDA GUARDADA*
+        return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: despedida guardada*
 │
-│ 📝 *Vista previa:*
+│ 📝 *vista previa:*
 │ \`\`${text.trim()}\`\`
 │
-│ 🗑️ *Para borrar:* .delbye
+│ 💿 *para borrar:* .delbye
 ╰─────────────────❒`);
     }
     if (command === 'delbye') {
-        if (!chat.customBye) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚠️ *SIN DESPEDIDA*
+        if (!chat.customBye) return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: sin despedida*
 │
-│ 🤖 *No tienes una despedida editada*
+│ 🪩 *no tienes una despedida editada*
 ╰─────────────────❒`);
         delete chat.customBye;
-        return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ✅ *DESPEDIDA ELIMINADA*
+        return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: despedida eliminada*
 │
-│ 🗑️ *Se borró el mensaje personalizado*
+│ 💿 *se borro el mensaje personalizado*
 ╰─────────────────❒`);
     }
 };
