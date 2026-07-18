@@ -17,8 +17,8 @@ const getHoy = () => {
 }
 
 const EMOJIS_DIA = {
-    lunes: '⚡', martes: '⚡', miercoles: '⚡', jueves: '⚡',
-    viernes: '⚡', sabado: '⚡', extra: '🤖'
+    lunes: '🥥', martes: '🐆', miercoles: '💿', jueves: '🪩',
+    viernes: '🥥', sabado: '🐆', extra: '💿'
 }
 
 let handler = async (m, { conn, args, command, isAdmin }) => {
@@ -29,20 +29,20 @@ let handler = async (m, { conn, args, command, isAdmin }) => {
     let hoy = getHoy()
     let texto = args.join(' ')
 
-    // =====.v ===== DISEÑO CYBER BOT
+    // =====.v ===== DISEÑO ANTITOP BOT
     if(command === 'v'){
-        let msg = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *SISTEMA DE SORTEOS* ⚡
-│ 🤖 *Bot:* Cyber Bot MD
+        let msg = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: sistema de sorteos activo*
+│ 🐆 *Bot:* Antitop Bot
 ╰─────────────────❒\n\n`
 
         for(let d of [...DIAS, 'extra']){
             msg += `╭─── ${EMOJIS_DIA[d]} ${d.toUpperCase()} ───╮\n`
             if(data[gid][d].length === 0) {
-                msg += `│ 💻 _Sin participantes_\n`
+                msg += `│ 💿 _Antitop Dice: sin participantes_\n`
             } else {
                 data[gid][d].forEach((u,i) => {
-                    msg += `│ ⚡ ${i+1}️⃣ *${u.nombre}*\n`
+                    msg += `│ 🪩 ${i+1}️⃣ *${u.nombre}*\n`
                     msg += `│ 📱 \`${u.numero}\`\n`
                     msg += `│ 🎁 Premio: *${u.premio}*\n`
                     msg += `│ ─────────────────\n`
@@ -52,25 +52,25 @@ let handler = async (m, { conn, args, command, isAdmin }) => {
         }
 
         msg += `╭─❒ *『 COMANDOS 』* ❒\n`
-        msg += `│ ⚡ *.list* Nombre / Numero / Premio\n`
-        msg += `│ 🤖 *.extra* Nombre / Numero / Premio\n`
-        msg += `│ 🗑️ *.delall* Borrar todo [Admin]\n`
-        msg += `│ 📊 *.v* Ver esta lista\n`
+        msg += `│ 🥥 *.list* Nombre / Numero / Premio\n`
+        msg += `│ 🐆 *.extra* Nombre / Numero / Premio\n`
+        msg += `│ 💿 *.delall* Borrar todo [Admin]\n`
+        msg += `│ 🪩 *.v* Ver esta lista\n`
         msg += `╰─────────────────❒\n\n`
-        msg += `> *“Conectando ganadores al sistema”* ⚡\n`
-        msg += `> *© Cyber Bot MD*`
+        msg += `> *🥥 Antitop Dice: conectando ganadores al sistema*\n`
+        msg += `> *© Antitop Bot*`
 
         return conn.reply(m.chat, msg, m)
     }
 
     // =====.list =====
     if(command === 'list'){
-        if(hoy === 'extra') return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒\n│ 🤖 *ERROR*\n│ Domingo solo se anota en *EXTRA*\n╰─────────────────❒`, m)
+        if(hoy === 'extra') return conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒\n│ 🥥 *Antitop Dice: error*\n│ domingo solo se anota en *extra*\n╰─────────────────❒`, m)
 
         let [nombre, numero, premio] = texto.split('/').map(x => x.trim())
         numero = numero?.replace(/[^0-9]/g, '')
 
-        if(!nombre ||!numero ||!premio) return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒\n│ ⚡ *FORMATO INCORRECTO*\n│\n│ *Ejemplo:*\n│.list Whois / 936994155 / Bot mensual\n╰─────────────────❒`, m)
+        if(!nombre ||!numero ||!premio) return conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒\n│ 🐆 *Antitop Dice: formato incorrecto*\n│\n│ *ejemplo:*\n│.list whois / 936994155 / bot mensual\n╰─────────────────❒`, m)
 
         for(let d of Object.keys(data[gid])){
             data[gid][d] = data[gid][d].filter(u => u.numero!== numero)
@@ -78,7 +78,7 @@ let handler = async (m, { conn, args, command, isAdmin }) => {
 
         data[gid][hoy].push({nombre, numero, premio})
         guardarDB(data)
-        return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒\n│ ✅ *¡REGISTRADO EN EL SISTEMA!*\n│\n│ 👤 *Nombre:* ${nombre}\n│ 📱 *Número:* ${numero}\n│ 🎁 *Premio:* ${premio}\n│ 📅 *Día:* ${hoy.toUpperCase()}\n│\n│ ⚡ *Suerte en el sorteo*\n╰─────────────────❒`, m)
+        return conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒\n│ 💿 *Antitop Dice: registrado en el sistema*\n│\n│ 👤 *nombre:* ${nombre}\n│ 📱 *numero:* ${numero}\n│ 🎁 *premio:* ${premio}\n│ 📅 *dia:* ${hoy.toUpperCase()}\n│\n│ 🪩 *Antitop Dice: suerte en el sorteo*\n╰─────────────────❒`, m)
     }
 
     // =====.extra =====
@@ -86,7 +86,7 @@ let handler = async (m, { conn, args, command, isAdmin }) => {
         let [nombre, numero, premio] = texto.split('/').map(x => x.trim())
         numero = numero?.replace(/[^0-9]/g, '')
 
-        if(!nombre ||!numero ||!premio) return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒\n│ 🤖 *FORMATO INCORRECTO*\n│\n│ *Ejemplo:*\n│.extra Juan / 999888777 / 20 soles\n╰─────────────────❒`, m)
+        if(!nombre ||!numero ||!premio) return conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒\n│ 🥥 *Antitop Dice: formato incorrecto*\n│\n│ *ejemplo:*\n│.extra juan / 999888777 / 20 soles\n╰─────────────────❒`, m)
 
         for(let d of Object.keys(data[gid])){
             data[gid][d] = data[gid][d].filter(u => u.numero!== numero)
@@ -94,15 +94,15 @@ let handler = async (m, { conn, args, command, isAdmin }) => {
 
         data[gid].extra.push({nombre, numero, premio})
         guardarDB(data)
-        return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒\n│ 🤖 *ANOTADO EN EXTRA*\n│\n│ 👤 *Nombre:* ${nombre}\n│ 📱 *Número:* ${numero}\n│ 🎁 *Premio:* ${premio}\n│\n│ ⚡ *Premio especial del sistema*\n╰─────────────────❒`, m)
+        return conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒\n│ 🐆 *Antitop Dice: anotado en extra*\n│\n│ 👤 *nombre:* ${nombre}\n│ 📱 *numero:* ${numero}\n│ 🎁 *premio:* ${premio}\n│\n│ 💿 *Antitop Dice: premio especial del sistema*\n╰─────────────────❒`, m)
     }
 
     // =====.delall =====
     if(command === 'delall'){
-        if(!isAdmin) return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒\n│ 🛡️ *ERROR*\n│ Solo *ADMINS* pueden usar esto\n╰─────────────────❒`, m)
+        if(!isAdmin) return conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒\n│ 🪩 *Antitop Dice: error*\n│ solo *admins* pueden usar esto\n╰─────────────────❒`, m)
         data[gid] = {lunes:[], martes:[], miercoles:[], jueves:[], viernes:[], sabado:[], extra:[]}
         guardarDB(data)
-        return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒\n│ 🗑️ *SISTEMA REINICIADO*\n│\n│ ⚡ Lista reseteada: Lunes a Sábado + Extra\n│ 🤖 *Grupo listo para empezar de 0*\n╰─────────────────❒`, m)
+        return conn.reply(m.chat, `╭─❒ *『 Antitop Bot 』* ❒\n│ 🥥 *Antitop Dice: sistema reiniciado*\n│\n│ 🐆 lista reseteada: lunes a sabado + extra\n│ 💿 *Antitop Dice: grupo listo para empezar de 0*\n╰─────────────────❒`, m)
     }
 }
 
