@@ -1,11 +1,11 @@
 import axios from 'axios'
 
 let handler = async (m, { conn, text }) => {
-    if (!text) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🔍 *BÚSQUEDA EN LA WEB*
+    if (!text) return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🥥 *Antitop Dice: busqueda en la web*
 │
-│ 🤖 *¿Qué deseas buscar?*
-│ ⚡ *Uso:*.google Cyber Bot
+│ 🐆 *que deseas buscar*
+│ 💿 *uso:*.google Antitop Bot
 ╰─────────────────❒`)
 
     await m.react('🔍')
@@ -14,27 +14,27 @@ let handler = async (m, { conn, text }) => {
         let { data } = await axios.get(`https://api.delirius.store/search/google?query=${encodeURIComponent(text)}`)
         let results = data.data.slice(0, 5)
 
-        if (!results.length) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *SIN RESULTADOS*
+        if (!results.length) return m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 🪩 *Antitop Dice: sin resultados*
 │
-│ ⚡ *No se encontró nada sobre:* ${text}
+│ 🥥 *no se encontro nada sobre:* ${text}
 ╰─────────────────❒`)
 
-        let txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🔍 *RESULTADOS DE BÚSQUEDA*
+        let txt = `╭─❒ *『 Antitop Bot 』* ❒
+│ 🐆 *Antitop Dice: resultados de busqueda*
 │
-│ 🤖 *Consulta:* ${text}
+│ 💿 *consulta:* ${text}
 ╰─────────────────❒\n\n`
 
         txt += results.map((v, i) => {
-            return `╭─── ⚡ *RESULTADO ${i + 1}* ───╮
+            return `╭─── 🥥 *resultado ${i + 1}* ───╮
 │ 📌 *${v.title}*
 │ 📝 ${v.description}
 │ 🔗 ${v.url}
 ╰───────────────────╯`
         }).join('\n\n')
 
-        txt += `\n\n> *“Datos procesados por Cyber Bot AI”* 💻\n> *© Cyber Bot System*`
+        txt += `\n\n> *“datos procesados por Antitop Bot AI”* 💿\n> *© Antitop Bot System*`
 
         await conn.reply(m.chat, txt, m)
         await m.react('✅')
@@ -42,11 +42,11 @@ let handler = async (m, { conn, text }) => {
     } catch (e) {
         console.error(e)
         await m.react('❌')
-        m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+        m.reply(`╭─❒ *『 Antitop Bot 』* ❒
+│ 💿 *Antitop Dice: error de sistema*
 │
-│ ⚡ *Falló la búsqueda*
-│ 🤖 *Intenta de nuevo*
+│ 🥥 *fallo la busqueda*
+│ 🐆 *Antitop Dice: intenta de nuevo*
 ╰─────────────────❒`)
     }
 }
