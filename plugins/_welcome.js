@@ -22,14 +22,17 @@ let handler = async (m, { conn, command, args }) => {
 │ 3. Expulsiones : ${k}
 │
 │ *Comandos*
-│.welcome on/off
-│.bye on/off
-│.kick on/off
+│.on welcome /.off welcome
+│.on bye /.off bye
+│.on kick /.off kick
 │
 ╰──────── 💿 ────────╯`, m)
     }
 
-    chat[command] = args[0].toLowerCase() === 'on'
+    let accion = args[0].toLowerCase()
+    if (accion!== 'on' && accion!== 'off') return m.reply('🥥 Usa:.on welcome o.off welcome 🐆')
+
+    chat[command] = accion === 'on'
     let icon = chat[command]? '🥥' : '💿'
     let nombre = command === 'welcome'? 'Bienvenidas' : command === 'bye'? 'Despedidas' : 'Expulsiones'
     m.reply(`${icon} *${nombre}* ${chat[command]? 'activadas 🐆' : 'desactivadas 🪩'}`)
