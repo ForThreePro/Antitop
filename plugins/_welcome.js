@@ -42,7 +42,7 @@ let handler = async (m, { conn, command, args }) => {
     m.reply(`${icon} *${nombre}* ${chat[tipo]? 'activadas 🐆' : 'desactivadas 🪩'}`)
 }
 handler.command = /^(on|off)$/i
-handler.help = ['on welcome', 'on bye', 'on kick']
+handler.help = ['on/off welcome', 'on/off bye', 'on/off kick']
 handler.tags = ['welcome']
 handler.admin = true
 handler.group = true
