@@ -2,19 +2,43 @@ import { readFileSync, existsSync } from 'fs'
 import { join } from 'path'
 
 let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isROwner }) => {
-  let isEnable = /true|enable|(turn)?on|1/i.test(args[0])
   let chat = global.db.data.chats[m.chat]
   let bot = global.db.data.settings[conn.user.jid] || {}
-  let type = command.toLowerCase()
 
-  if (!args[0]) return m.reply(`🥥 *Antitop Dice: config* 💿\n\n🐆 *configuracion incorrecta.*\n📌 *uso:* ${usedPrefix + command} on/off\n*ejemplo:* ${usedPrefix + command} on`)
+  // NUEVO: El primer arg es on/off, el segundo es el tipo
+  let accion = command.toLowerCase() // on o off
+  let type = args[0]?.toLowerCase()
 
+  if (!type) {
+    let w = chat.welcome? '🥥 ON' : '💿 OFF'
+    let b = chat.bye? '🥥 ON' : '💿 OFF'
+    let k = chat.kick? '🥥 ON' : '💿 OFF'
+    let d = chat.detect? '🥥 ON' : '💿 OFF'
+    return conn.reply(m.chat, `╭─ 🥥 𝗔𝗡𝗧𝗜𝗧𝗢𝗣 𝗕𝗢𝗧 🪩 ─╮
+│
+│ 🐆 *Panel de Control*
+│
+│ 1. Bienvenidas : ${w}
+│ 2. Despedidas : ${b}
+│ 3. Expulsiones : ${k}
+│ 4. Detect : ${d}
+│
+│ *Comandos*
+│.on welcome /.off welcome
+│.on bye /.off bye
+│.on kick /.off kick
+│.on detect /.off detect
+│
+╰──────── 💿 ────────╯`, m)
+  }
+
+  let isEnable = accion === 'on'
   let fail = false
+
   switch (type) {
-    // NUEVOS: WELCOME BYE KICK
     case 'welcome': case 'bienvenida':
       if (m.isGroup &&!isAdmin) { global.dfail('admin', m, conn); fail = true; break }
-      chat.welcome = isEnable // unificado en ingles
+      chat.welcome = isEnable
       break
     case 'bye': case 'despedida':
       if (m.isGroup &&!isAdmin) { global.dfail('admin', m, conn); fail = true; break }
@@ -24,7 +48,6 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       if (m.isGroup &&!isAdmin) { global.dfail('admin', m, conn); fail = true; break }
       chat.kick = isEnable
       break
-
     case 'detect':
       if (m.isGroup &&!isAdmin) { global.dfail('admin', m, conn); fail = true; break }
       chat.detect = isEnable
@@ -65,12 +88,11 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       bot.antiPrivate = isEnable
       break
     default:
-      return
+      return m.reply(`🥥 Tipo inválido. Usa: welcome, bye, kick, detect`)
   }
 
   if (fail) return
 
-  // IMAGEN LOCAL antitop.jpg
   const pathImg = join(process.cwd(), 'storage', 'img', 'antitop.jpg')
   let antitopImg = existsSync(pathImg)? readFileSync(pathImg) : null
 
@@ -83,21 +105,17 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
   statusTxt += `💿 *Antitop Bot System*`
 
   if (antitopImg) {
-    await conn.sendMessage(m.chat, {
-      image: antitopImg,
-      caption: statusTxt,
-      mentions: [m.sender]
-    }, { quoted: m })
+    await conn.sendMessage(m.chat, { image: antitopImg, caption: statusTxt, mentions: [m.sender] }, { quoted: m })
   } else {
-    await conn.sendMessage(m.chat, {
-      text: statusTxt,
-      mentions: [m.sender]
-    }, { quoted: m })
+    await conn.sendMessage(m.chat, { text: statusTxt, mentions: [m.sender] }, { quoted: m })
   }
 }
 
-handler.help = ['welcome', 'bye', 'kick', 'detect', 'antilink', 'antibot', 'modoadmin', 'subbots', 'nsfw', 'audios', 'antiprivado'].map(v => v + ' on/off')
+// LO IMPORTANTE: AHORA EL COMANDO ES on/off
+handler.help = ['on/off welcome', 'on/off bye', 'on/off kick', 'on/off detect']
 handler.tags = ['config']
-handler.command = ['welcome', 'bienvenida', 'bye', 'despedida', 'kick', 'expulsion', 'detect', 'subbots', 'serbot', 'antispam', 'antilink', 'antibot', 'modoadmin', 'nsfw', 'antinopor', 'audios', 'autoleer', 'autoread', 'antiprivado']
+handler.command = /^(on|off)$/i // ← Solo acepta.on y.off
+handler.admin = true
+handler.group = true
 
 export default handler
