@@ -7,7 +7,7 @@ handler.before = async function (m, { conn, groupMetadata }) {
     if (!m.messageStubType ||!m.isGroup) return
 
     let chat = global.db.data.chats[m.chat]
-    if (!chat?.detect) return
+    if (!chat?.detect) return // solo funciona si detect esta ON
 
     const userJid = m.sender
     const usuario = `@${userJid.split('@')[0]}`
@@ -95,38 +95,11 @@ handler.before = async function (m, { conn, groupMetadata }) {
 │ > *🥥 Antitop Dice: acceso de administrador revocado*
 ╰─────────────────❒`; break
 
-        case WAMessageStubType.GROUP_PARTICIPANT_ADD:
-            txt = `╭─❒ *『 Antitop Bot 』* ❒
-│ 💿 *Antitop Dice: nuevo usuario conectado*
-│
-│ 🔥 *bienvenido:* @${m.messageStubParameters[0].split('@')[0]}
-│ 💻 *sistema:* ${group}
-│ 🥥 *estado:* conexion registrada
-│
-│ > *🐆 Antitop Dice: nuevo nodo agregado al sistema*
-╰─────────────────❒`; break
+        // ELIMINADOS: WELCOME, BYE, KICK
+        // case WAMessageStubType.GROUP_PARTICIPANT_ADD:
+        // case WAMessageStubType.GROUP_PARTICIPANT_LEAVE:
+        // case WAMessageStubType.GROUP_PARTICIPANT_REMOVE:
 
-        case WAMessageStubType.GROUP_PARTICIPANT_LEAVE:
-            txt = `╭─❒ *『 Antitop Bot 』* ❒
-│ 🪩 *Antitop Dice: desconexion registrada*
-│
-│ 😔 *se fue:* @${m.messageStubParameters[0].split('@')[0]}
-│ 💻 *sistema:* ${group}
-│ 💿 *estado:* abandono el sistema
-│
-│ > *🥥 Antitop Dice: nodo desconectado*
-╰─────────────────❒`; break
-
-        case WAMessageStubType.GROUP_PARTICIPANT_REMOVE:
-            txt = `╭─❒ *『 Antitop Bot 』* ❒
-│ 🐆 *Antitop Dice: expulsion ejecutada*
-│
-│ 💣 *eliminado:* @${m.messageStubParameters[0].split('@')[0]}
-│ 👤 *por orden de:* ${usuario}
-│ 💿 *causa:* violacion de protocolos
-│
-│ > *🪩 Antitop Dice: protocolo de seguridad aplicado*
-╰─────────────────❒`; break
     }
 
     if (txt) {
