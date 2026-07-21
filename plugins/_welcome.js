@@ -3,52 +3,8 @@ import fetch from 'node-fetch'
 import fs from 'fs'
 import path from 'path'
 
-// COMANDOS
-let handler = async (m, { conn, command, args }) => {
-    if (!m.isGroup) return m.reply('🥥 Solo funciona en grupos 🐆')
-    if (!global.db.data.chats[m.chat]) global.db.data.chats[m.chat] = {}
-    let chat = global.db.data.chats[m.chat]
+let handler = async () => {}
 
-    // command = on/off | args[0] = welcome/bye/kick
-    if (!command ||!args[0]) {
-        let w = chat.welcome? '🥥 ON' : '💿 OFF'
-        let b = chat.bye? '🥥 ON' : '💿 OFF'
-        let k = chat.kick? '🥥 ON' : '💿 OFF'
-        return conn.reply(m.chat, `╭─ 🥥 𝗔𝗡𝗧𝗜𝗧𝗢𝗣 𝗕𝗢𝗧 🪩 ─╮
-│
-│ 🐆 *Panel de Control*
-│
-│ 1. Bienvenidas : ${w}
-│ 2. Despedidas : ${b}
-│ 3. Expulsiones : ${k}
-│
-│ *Comandos*
-│.on welcome /.off welcome
-│.on bye /.off bye
-│.on kick /.off kick
-│
-╰──────── 💿 ────────╯`, m)
-    }
-
-    let accion = command.toLowerCase()
-    let tipo = args[0].toLowerCase()
-
-    if (accion!== 'on' && accion!== 'off') return m.reply('🥥 Usa:.on welcome o.off welcome 🐆')
-    if (!['welcome','bye','kick'].includes(tipo)) return m.reply('🥥 Tipo inválido. Usa: welcome, bye, kick 🐆')
-
-    chat[tipo] = accion === 'on'
-    let icon = chat[tipo]? '🥥' : '💿'
-    let nombre = tipo === 'welcome'? 'Bienvenidas' : tipo === 'bye'? 'Despedidas' : 'Expulsiones'
-    m.reply(`${icon} *${nombre}* ${chat[tipo]? 'activadas 🐆' : 'desactivadas 🪩'}`)
-}
-handler.command = /^(on|off)$/i
-handler.help = ['on/off welcome', 'on/off bye', 'on/off kick']
-handler.tags = ['welcome']
-handler.admin = true
-handler.group = true
-export default handler
-
-// DETECTOR
 handler.before = async function (m, { conn }) {
     if (!m.messageStubType ||!m.isGroup) return
     if (!global.db.data.chats[m.chat]) global.db.data.chats[m.chat] = {}
@@ -148,3 +104,5 @@ handler.before = async function (m, { conn }) {
         }, 1500)
     }
 }
+
+export default handler
